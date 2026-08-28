@@ -1,0 +1,133 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(16px, var(--hero-pad));
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(41, 41, 41, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: enrollFade 0.25s ease both;
+}
+
+.dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 480px);
+  max-height: min(92dvh, 880px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  background: var(--white);
+  border: 1px solid rgba(41, 41, 41, 0.1);
+  border-radius: 28px;
+  padding: clamp(28px, 4vw, 40px);
+  box-shadow: 0 28px 80px rgba(41, 41, 41, 0.22);
+  animation: enrollUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.glow {
+  position: absolute;
+  top: -20%;
+  right: -15%;
+  width: 70%;
+  height: 55%;
+  background: radial-gradient(ellipse at center, rgba(240, 210, 216, 0.55) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--warm-grey);
+  color: var(--graphite);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.close:hover {
+  background: var(--blush);
+  transform: scale(1.04);
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  padding-right: 36px;
+  margin-bottom: 26px;
+}
+
+.header h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 6vw, 40px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.header h2 em {
+  font-style: italic;
+  color: var(--rose);
+}
+
+@keyframes enrollFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes enrollUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 560px) {
+  .root {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .dialog {
+    width: 100%;
+    max-height: min(94dvh, 100%);
+    border-radius: 24px 24px 20px 20px;
+    padding: 24px 18px 20px;
+  }
+
+  .close {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+}

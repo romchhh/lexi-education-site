@@ -1,0 +1,28 @@
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--graphite);
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 12px;
+  height: 12px;
+}

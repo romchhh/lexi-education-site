@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&family=Unbounded:wght@700;800&display=swap');
+
+.lexi {
+  --graphite: #1f1f1f;
+  --white: #ffffff;
+  --warm-grey: #e8e0df;
+  --blush: #e8b8c2;
+  --rose: #c45a75;
+
+  /* aliases for existing component refs */
+  --light-grey: var(--warm-grey);
+  --dusty-pink: var(--blush);
+  --muted-rose: var(--rose);
+
+  --color-bg: var(--white);
+  --color-bg-elevated: var(--warm-grey);
+  --color-accent: var(--blush);
+  --color-accent2: var(--rose);
+  --color-text: var(--graphite);
+  --color-muted: #5f5555;
+  --color-line: rgba(31, 31, 31, 0.14);
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-sans: 'Manrope', 'Helvetica Neue', sans-serif;
+  --font-headline: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --font-logo: 'Unbounded', sans-serif;
+  --radius-pill: 999px;
+  --hero-pad: clamp(24px, 6.5vw, 120px);
+
+  --deep: var(--graphite);
+  --sky: var(--blush);
+  --sand: var(--warm-grey);
+  --slate: var(--color-muted);
+  --font-serif: var(--font-display);
+
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+.lexi *,
+.lexi *::before,
+.lexi *::after {
+  box-sizing: border-box;
+}
+
+.lexi img,
+.lexi svg,
+.lexi video {
+  max-width: 100%;
+}
+
+.lexi a {
+  text-decoration: none;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 769px) {
+  .lexi {
+    --hero-pad: clamp(48px, 7vw, 128px);
+  }
+}
+
+@media (max-width: 768px) {
+  .lexi {
+    --hero-pad: 20px;
+  }
+}
