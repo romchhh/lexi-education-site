@@ -137,10 +137,10 @@
     font-size: inherit;
     letter-spacing: inherit;
     color: var(--graphite);
-    background: var(--blush);
-    padding: 0.1em 0.2em;
-    border-radius: 6px;
+    padding: 0.12em 0.22em;
+    border-radius: 4px;
     white-space: nowrap;
+    background: linear-gradient(180deg, transparent 58%, rgba(232, 184, 194, 0.72) 58%);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
