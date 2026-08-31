@@ -1,0 +1,217 @@
+.page {
+  background: var(--white);
+}
+
+.hero {
+  padding: clamp(110px, 14vw, 140px) var(--hero-pad) clamp(40px, 6vw, 64px);
+  background: var(--white);
+  animation: slideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  width: 100%;
+  padding: clamp(32px, 4vw, 48px);
+  border-radius: 36px;
+  background:
+    radial-gradient(90% 80% at 100% 0%, rgba(232, 184, 194, 0.45) 0%, transparent 55%),
+    linear-gradient(165deg, #fff 0%, #f7f0f1 100%);
+  border: 1.5px solid rgba(31, 31, 31, 0.08);
+}
+
+.heroCopy {
+  max-width: 36rem;
+}
+
+.heroTitle {
+  margin: 0 0 18px;
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: clamp(48px, 8vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--graphite);
+}
+
+.heroTitle em {
+  font-style: italic;
+  color: var(--rose);
+}
+
+.heroTagline {
+  margin: 0 0 14px;
+  font-family: var(--font-headline);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--graphite);
+}
+
+.heroLead {
+  margin: 0 0 28px;
+  max-width: 40ch;
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.6;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.heroFlag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  font-size: clamp(96px, 14vw, 160px);
+  line-height: 1;
+  filter: drop-shadow(0 12px 24px rgba(31, 31, 31, 0.12));
+}
+
+.enroll {
+  padding: 12px 14px 12px 24px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--rose);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 14px 34px rgba(196, 90, 117, 0.35);
+}
+
+.enroll:hover {
+  background: #b04e68;
+}
+
+.process {
+  padding: clamp(48px, 7vw, 80px) var(--hero-pad) clamp(24px, 4vw, 40px);
+  background: var(--white);
+  animation: slideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.inner {
+  width: 100%;
+}
+
+.sectionTitle {
+  margin: 0 0 clamp(24px, 4vw, 36px);
+  text-align: center;
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 44px);
+  letter-spacing: -0.03em;
+  color: var(--graphite);
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.processCard {
+  min-height: 180px;
+  padding: clamp(22px, 3vw, 28px);
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.processCard h3 {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.processCard p {
+  margin: 0;
+  max-width: 36ch;
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 600;
+  opacity: 0.78;
+}
+
+.toneBlush {
+  background: #f0d5db;
+  color: var(--graphite);
+}
+
+.toneWarm {
+  background: #ece4e3;
+  color: var(--graphite);
+}
+
+.toneWhite {
+  background: #faf6f6;
+  color: var(--graphite);
+  border: 1px solid rgba(31, 31, 31, 0.06);
+}
+
+.toneGraphite {
+  background: var(--graphite);
+  color: var(--white);
+}
+
+.toneGraphite p {
+  opacity: 0.7;
+}
+
+.toneRose {
+  background: var(--rose);
+  color: var(--white);
+}
+
+.toneRose p {
+  opacity: 0.85;
+}
+
+.toneSoft {
+  background: #e8eef2;
+  color: var(--graphite);
+}
+
+.centerCta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+@media (max-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .heroFlag {
+    order: -1;
+    width: min(180px, 50vw);
+    font-size: clamp(72px, 22vw, 110px);
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .heroInner {
+    border-radius: 28px;
+    padding: 24px 20px 28px;
+  }
+
+  .enroll {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

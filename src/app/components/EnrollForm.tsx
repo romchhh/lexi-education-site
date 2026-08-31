@@ -17,9 +17,14 @@ type Errors = {
   email: boolean
 }
 
-type Status = 'idle' | 'loading' | 'success'
+type Status = 'idle' | 'loading' | 'success' | 'error'
 
 const initial: FormState = { name: '', phone: '', email: '' }
+
+const SOURCE_LABELS: Record<string, string> = {
+  modal: 'Модальне вікно',
+  contact: 'Сторінка контактів',
+}
 
 type Props = {
   idPrefix?: string
@@ -51,11 +56,30 @@ export default function EnrollForm({ idPrefix = 'enroll', compact = false, onSuc
     if (next.name || next.phone || next.email) return
 
     setStatus('loading')
-    await new Promise((r) => setTimeout(r, 1100))
-    setStatus('success')
-    setForm(initial)
-    if (onSuccess) {
-      window.setTimeout(() => onSuccess(), 1400)
+
+    try {
+      const response = await fetch('/api/enroll', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          email: form.email.trim(),
+          source: SOURCE_LABELS[idPrefix] ?? idPrefix,
+          pageUrl: window.location.href,
+          pageTitle: document.title,
+        }),
+      })
+
+      if (!response.ok) throw new Error('submit_failed')
+
+      setStatus('success')
+      setForm(initial)
+      if (onSuccess) {
+        window.setTimeout(() => onSuccess(), 1400)
+      }
+    } catch {
+      setStatus('error')
     }
   }
 
@@ -112,6 +136,11 @@ export default function EnrollForm({ idPrefix = 'enroll', compact = false, onSuc
       </div>
 
       <div className={styles.actions}>
+        {status === 'error' ? (
+          <p className={styles.submitError} role="alert">
+            Не вдалося надіслати заявку. Спробуйте ще раз або напишіть нам у Telegram.
+          </p>
+        ) : null}
         <button type="submit" className={styles.submit} disabled={status === 'loading'}>
           <span>{status === 'loading' ? 'Надсилання…' : 'Відправити'}</span>
           <ArrowIcon />

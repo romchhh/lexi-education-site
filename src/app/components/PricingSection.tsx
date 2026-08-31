@@ -34,75 +34,65 @@ export default function PricingSection() {
           </span>
           <div className={styles.trialBadge}>0 грн</div>
           <div className={styles.trialCopy}>
-            <h3>Пробне заняття безкоштовно</h3>
-            <p>Визначимо рівень, обговоримо цілі та підберемо формат саме під вас.</p>
+            <h3>Пробне заняття — безкоштовно</h3>
+            <p>Визначимо рівень, обговоримо цілі та підберемо формат.</p>
           </div>
-          <EnrollButton className={styles.trialCta}>
-            Записатись
-          </EnrollButton>
+          <EnrollButton className={styles.trialCta}>Записатись</EnrollButton>
         </div>
 
-        <div className={styles.switcher}>
-          <p className={styles.switcherLabel}>Оберіть формат</p>
-          <div className={styles.tabs} role="tablist" aria-label="Формати цін">
-            {PRICING_TABS.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                role="tab"
-                aria-selected={tab.id === activeId}
-                className={`${styles.tab} ${tab.id === activeId ? styles.tabActive : ''}`}
-                onClick={() => setActiveId(tab.id)}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+        <div className={styles.tabs} role="tablist" aria-label="Формати цін">
+          {PRICING_TABS.map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              aria-selected={tab.id === activeId}
+              className={`${styles.tab} ${tab.id === activeId ? styles.tabActive : ''}`}
+              onClick={() => setActiveId(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         <div className={styles.panel} role="tabpanel">
           <div className={styles.panelHead}>
-            <div>
-              <h3>{active.title}</h3>
-              <p className={styles.subtitle}>{active.subtitle}</p>
-            </div>
+            <h3>{active.title}</h3>
+            <p className={styles.subtitle}>{active.subtitle}</p>
             {active.note ? <p className={styles.note}>{active.note}</p> : null}
           </div>
 
           {isExams ? (
-            <div className={styles.examGrid}>
+            <div className={styles.priceList}>
               {EXAM_PRICES.rows.map((row) => (
-                <article key={row[0]} className={styles.examCard}>
-                  <h4>{row[0]}</h4>
-                  <ul>
+                <div key={row[0]} className={styles.priceRow}>
+                  <span className={styles.rowLabel}>{row[0]}</span>
+                  <div className={styles.examLevels}>
                     {EXAM_PRICES.headers.slice(1).map((level, i) => (
-                      <li key={level}>
-                        <span className={styles.levelChip}>{level}</span>
-                        <strong className={styles.price}>{row[i + 1]}</strong>
-                      </li>
+                      <span key={level} className={styles.examLevel}>
+                        <span>{level}</span>
+                        <strong>{row[i + 1]}</strong>
+                      </span>
                     ))}
-                  </ul>
-                </article>
+                  </div>
+                </div>
               ))}
             </div>
           ) : (
-            <div className={`${styles.priceGroups} ${active.tables.length > 1 ? styles.priceGroupsSplit : ''}`}>
+            <div className={styles.priceBlocks}>
               {active.tables.map((table) => (
-                <div key={`${active.id}-${table.heading ?? 'main'}`} className={styles.priceGroup}>
+                <div key={`${active.id}-${table.heading ?? 'main'}`} className={styles.priceBlock}>
                   {(table.heading || table.meta) && (
-                    <div className={styles.groupHead}>
+                    <div className={styles.blockHead}>
                       {table.heading ? <h4>{table.heading}</h4> : null}
-                      {table.meta ? <span className={styles.groupMeta}>{table.meta}</span> : null}
+                      {table.meta ? <span>{table.meta}</span> : null}
                     </div>
                   )}
                   <ul className={styles.priceList}>
                     {table.rows.map((row) => (
-                      <li key={row.level}>
-                        <span className={styles.levelChip}>{row.level}</span>
-                        <div className={styles.priceWrap}>
-                          <strong className={styles.price}>{row.price}</strong>
-                          <span className={styles.perLesson}>/ заняття</span>
-                        </div>
+                      <li key={row.level} className={styles.priceRow}>
+                        <span className={styles.rowLabel}>{row.level}</span>
+                        <strong className={styles.price}>{row.price}</strong>
                       </li>
                     ))}
                   </ul>
@@ -120,49 +110,26 @@ export default function PricingSection() {
         </div>
 
         <div className={styles.packages}>
-          <div className={styles.packagesIntro}>
-            <h3>Пакети зі знижкою</h3>
-            <p>Чим більше занять плануєте наперед — тим вигідніше.</p>
+          <p className={styles.packagesTitle}>Пакети зі знижкою</p>
+          <div className={styles.packageChips}>
+            {PACKAGES.standard.map((item) => (
+              <span key={item.name} className={styles.chip}>
+                {item.name}
+                <strong>{item.discount === '—' ? '0%' : item.discount}</strong>
+              </span>
+            ))}
           </div>
-          <div className={styles.packageGrid}>
-            <div className={styles.packageCol}>
-              <h4>Усі формати</h4>
-              <ul>
-                {PACKAGES.standard.map((item) => (
-                  <li key={item.name}>
-                    <span>{item.name}</span>
-                    <strong className={item.discount === '—' ? styles.noDiscount : undefined}>
-                      {item.discount === '—' ? 'без знижки' : item.discount}
-                    </strong>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={styles.packageCol}>
-              <h4>Sprachklub</h4>
-              <ul>
-                {PACKAGES.sprachklub.map((item) => (
-                  <li key={item.name}>
-                    <span>{item.name}</span>
-                    <strong>{item.discount}</strong>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <p className={styles.packagesHint}>
+            Sprachklub: 8 занять −5% · 12 занять −8%
+          </p>
         </div>
 
         <div className={styles.help}>
           <div>
             <h3>Не знаєте, який формат обрати?</h3>
-            <p>
-              Не хвилюйтеся — вам не потрібно самостійно визначати свій рівень або вирішувати,
-              який формат підійде найкраще. Почніть із безкоштовного пробного заняття в LEXI.
-            </p>
+            <p>Почніть із безкоштовного пробного заняття.</p>
           </div>
-          <EnrollButton className={styles.helpCta}>
-            Записатись на пробне
-          </EnrollButton>
+          <EnrollButton className={styles.helpCta}>Записатись на пробне</EnrollButton>
         </div>
       </div>
     </section>

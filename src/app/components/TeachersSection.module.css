@@ -1,0 +1,351 @@
+.section {
+  position: relative;
+  padding: clamp(110px, 14vw, 140px) var(--hero-pad) clamp(64px, 9vw, 110px);
+  background:
+    radial-gradient(90% 70% at 100% 0%, rgba(232, 184, 194, 0.4) 0%, transparent 55%),
+    radial-gradient(70% 55% at 0% 100%, rgba(232, 184, 194, 0.22) 0%, transparent 50%),
+    #f7f1f2;
+  overflow: hidden;
+  min-height: 70vh;
+}
+
+.glow {
+  position: absolute;
+  right: -10%;
+  top: 18%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(196, 90, 117, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  max-width: none;
+  margin-bottom: clamp(28px, 4vw, 40px);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.heading {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: clamp(34px, 5.6vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--graphite);
+}
+
+.heading em {
+  font-style: normal;
+  color: var(--rose);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin-bottom: clamp(28px, 4vw, 40px);
+  border-bottom: 1px solid rgba(31, 31, 31, 0.1);
+  padding-bottom: 2px;
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 2px 14px;
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: default;
+}
+
+.tab:disabled {
+  opacity: 0.5;
+}
+
+.tabActive {
+  color: var(--graphite);
+}
+
+.tabActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--rose);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.6vw, 28px);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(160px, 0.9fr);
+  gap: clamp(16px, 2.2vw, 24px);
+  align-items: stretch;
+  min-width: 0;
+  padding: clamp(20px, 2.4vw, 28px);
+  border-radius: 32px;
+  background: var(--white);
+  border: none;
+  box-shadow:
+    0 18px 48px rgba(31, 31, 31, 0.08),
+    0 2px 0 rgba(255, 255, 255, 0.8) inset;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 56px rgba(31, 31, 31, 0.12);
+}
+
+.card:nth-child(2) { animation-delay: 0.05s; }
+.card:nth-child(3) { animation-delay: 0.1s; }
+.card:nth-child(4) { animation-delay: 0.15s; }
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 6px 0 4px;
+}
+
+.lang {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.name {
+  margin: 0 0 12px;
+  font-family: var(--font-headline);
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  color: var(--graphite);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--graphite);
+}
+
+.metaIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--blush);
+  color: var(--rose);
+  font-size: 10px;
+}
+
+.dot {
+  color: var(--color-muted);
+}
+
+.bio {
+  margin: 0;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--rose);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.more:hover {
+  gap: 12px;
+  color: #b04e68;
+}
+
+.photoCol {
+  position: relative;
+  align-self: stretch;
+  min-height: 240px;
+  overflow: visible;
+}
+
+.photoWrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--warm-grey);
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.photo {
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.card:hover .photo {
+  transform: scale(1.035);
+}
+
+.clip {
+  position: absolute;
+  top: -22px;
+  right: -4px;
+  width: clamp(64px, 8vw, 86px);
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 16px rgba(31, 31, 31, 0.18));
+  transform: rotate(10deg);
+}
+
+.ctaCard {
+  margin-top: clamp(40px, 6vw, 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  padding: clamp(36px, 5vw, 52px) clamp(28px, 4vw, 48px);
+  border-radius: 24px;
+  background: var(--graphite);
+  color: var(--white);
+}
+
+.ctaCard h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+.ctaCard p {
+  margin: 0 auto;
+  max-width: 42ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 500;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px 10px 28px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--blush);
+  color: var(--graphite);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+  min-width: 280px;
+}
+
+.cta:hover {
+  background: var(--white);
+  transform: translateY(-1px);
+}
+
+.ctaIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--graphite);
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    grid-template-columns: minmax(0, 1.15fr) minmax(140px, 0.9fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .card {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .photoCol {
+    order: -1;
+    min-height: 260px;
+  }
+
+  .clip {
+    top: -16px;
+    right: 10px;
+    width: 70px;
+  }
+
+  .ctaCard {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+
+  .cta {
+    width: 100%;
+    min-width: 0;
+    justify-content: space-between;
+  }
+}

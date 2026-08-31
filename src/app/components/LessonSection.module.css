@@ -120,6 +120,21 @@
   transform: translateY(-1px);
 }
 
+.more {
+  margin: 20px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.more a {
+  color: var(--rose);
+  text-decoration: none;
+}
+
+.more a:hover {
+  text-decoration: underline;
+}
+
 .ctaIcon {
   display: inline-flex;
   align-items: center;

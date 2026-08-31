@@ -19,7 +19,7 @@ export default function ContactSection() {
               ↘
             </span>
             <p className={styles.hookText}>
-              отримай <em>безкоштовний</em> урок!
+              отримай <em>безкоштовне</em> заняття
             </p>
           </div>
 

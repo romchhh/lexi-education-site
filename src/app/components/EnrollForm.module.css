@@ -47,6 +47,19 @@
   box-shadow: 0 0 0 3px rgba(214, 118, 142, 0.2);
 }
 
+.submitError {
+  width: 100%;
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(232, 74, 95, 0.08);
+  color: var(--rose);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: center;
+}
+
 .actions {
   display: flex;
   align-items: center;

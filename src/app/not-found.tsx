@@ -38,7 +38,7 @@ export default function NotFound() {
             </span>
           </Link>
           <Link href="/#contact" className={styles.secondary}>
-            Безкоштовний урок
+            Безкоштовне заняття
           </Link>
         </div>
       </div>

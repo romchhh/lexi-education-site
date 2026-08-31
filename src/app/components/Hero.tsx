@@ -26,7 +26,7 @@ export default function Hero() {
           </h1>
           <p className={styles.role}>{BRAND.role}</p>
           <EnrollButton className={styles.heroCta}>
-            Записатись на урок
+            Записатись на заняття
           </EnrollButton>
         </div>
 
@@ -34,7 +34,7 @@ export default function Hero() {
           <div className={styles.portraitGlow} aria-hidden="true" />
           <Image
             src={BRAND.heroImage}
-            alt="Урок у школі іноземних мов LEXI.education"
+            alt="Заняття у школі іноземних мов LEXI.education"
             fill
             priority
             sizes="(max-width: 768px) 100vw, 55vw"

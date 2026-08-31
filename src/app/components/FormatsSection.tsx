@@ -5,7 +5,7 @@ const BADGE_TILTS = [styles.tiltA, styles.tiltB, styles.tiltC, styles.tiltD, sty
 
 export default function FormatsSection() {
   return (
-    <section id="napryamy" className={styles.section}>
+    <section id="formaty" className={styles.section}>
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.inner}>
         <header className={styles.header}>

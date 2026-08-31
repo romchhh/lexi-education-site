@@ -44,9 +44,9 @@ export default function EnrollModal() {
           <h2 id={titleId}>
             отримай
             <br />
-            <em>безкоштовний</em>
+            <em>безкоштовне</em>
             <br />
-            урок!
+            заняття
           </h2>
         </header>
 
