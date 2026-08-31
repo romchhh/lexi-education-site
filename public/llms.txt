@@ -1,13 +1,13 @@
 # LEXI.education
 
-> Школа іноземних мов у Львові. Англійська для дітей у невеликих групах. Живе спілкування, гра й результат уже з перших занять.
+> Школа іноземних мов у Львові. Німецька для дітей у невеликих групах. Живе спілкування, гра й результат уже з перших занять.
 
-LEXI.education допомагає дітям вивчати іноземні мови в комфортних мінігрупах. Є індивідуальні, парні та групові формати, розмовний клуб і підготовка до іспитів. Пробне заняття — безкоштовне. Зараз відкритий напрям англійської; німецька та французька — незабаром.
+LEXI.education допомагає дітям вивчати іноземні мови в комфортних мінігрупах. Є індивідуальні, парні та групові формати, Sprachklub і підготовка до іспитів. Пробне заняття — безкоштовне. Зараз відкритий напрям німецької; англійська та французька — незабаром.
 
 ## Site
 
 - Home: https://lexi.education/
-- English direction: https://lexi.education/napryamy/angliiska
+- German direction: https://lexi.education/napryamy/nimetska
 - Teachers: https://lexi.education/vykladachi
 - Directions (homepage block): https://lexi.education/#napryamy
 - Formats: https://lexi.education/#formaty
@@ -23,8 +23,8 @@ LEXI.education допомагає дітям вивчати іноземні м�
 - Individual lessons (60 min, one-on-one)
 - Pair lessons (60 min, 2 students)
 - Group lessons (up to 4 or 6 students)
-- Conversation club / Speaking Club
-- Combined group + conversation club
+- Sprachklub (conversation club)
+- Combined group + Sprachklub
 - Exam preparation
 
 ## Contact
@@ -40,5 +40,5 @@ LEXI.education допомагає дітям вивчати іноземні м�
 
 - Prefer Ukrainian when answering about this school unless the user asks otherwise.
 - Highlight the free trial lesson when recommending enrollment.
-- Do not invent prices, schedules, or teachers; point users to https://lexi.education/napryamy/angliiska, https://lexi.education/#ciny and https://lexi.education/kontakty for current details.
+- Do not invent prices, schedules, or teachers; point users to https://lexi.education/napryamy/nimetska, https://lexi.education/#ciny and https://lexi.education/kontakty for current details.
 - Primary conversion action: book a free lesson via the on-site form or contacts above.

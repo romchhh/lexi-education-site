@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ENGLISH_DIRECTION } from '../../brand'
+import { GERMAN_DIRECTION } from '../../brand'
 import EnglishDirection from '../../components/EnglishDirection'
 import JsonLd from '../../components/JsonLd'
 import {
@@ -10,22 +10,22 @@ import {
   webPageJsonLd,
 } from '../../seo'
 
-export const metadata: Metadata = createPageMetadata(PAGE_SEO.english)
+export const metadata: Metadata = createPageMetadata(PAGE_SEO.german)
 
-export default function EnglishDirectionPage() {
+export default function GermanDirectionPage() {
   return (
     <>
       <JsonLd
         data={[
-          webPageJsonLd(PAGE_SEO.english),
+          webPageJsonLd(PAGE_SEO.german),
           breadcrumbJsonLd([
             { name: 'Головна', path: '/' },
-            { name: 'Англійська', path: '/napryamy/angliiska' },
+            { name: 'Німецька', path: '/napryamy/nimetska' },
           ]),
           courseJsonLd({
-            name: PAGE_SEO.english.title,
-            description: ENGLISH_DIRECTION.heroLead,
-            path: '/napryamy/angliiska',
+            name: PAGE_SEO.german.title,
+            description: GERMAN_DIRECTION.heroLead,
+            path: '/napryamy/nimetska',
           }),
         ]}
       />

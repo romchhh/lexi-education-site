@@ -14,7 +14,7 @@ const PAGE_LABELS: Record<string, string> = {
   '/kontakty': 'Контакти',
   '/faq': 'FAQ',
   '/vykladachi': 'Викладачі',
-  '/napryamy/angliiska': 'Англійська',
+  '/napryamy/nimetska': 'Німецька',
 }
 
 function pageLabelFromUrl(pageUrl?: string): string | undefined {

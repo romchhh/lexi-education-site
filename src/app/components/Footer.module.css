@@ -90,6 +90,25 @@
   text-decoration: none;
 }
 
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+
+.legal a {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.legal a:hover {
+  color: var(--rose);
+}
+
 .credit {
   margin: 0;
 }

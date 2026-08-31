@@ -1,5 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { BRAND, NAV } from '../brand'
+import { LEGAL_LINKS } from '../legal'
 import styles from './Footer.module.css'
 
 export default function Footer() {
@@ -44,6 +46,13 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <span>© {new Date().getFullYear()} LEXI.education. Усі права захищені.</span>
+        <div className={styles.legal}>
+          {LEGAL_LINKS.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
         <p className={styles.credit}>
           Розроблено{' '}
           <a href="https://telebots.site/uk" target="_blank" rel="noopener noreferrer">

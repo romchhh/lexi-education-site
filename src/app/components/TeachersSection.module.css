@@ -207,14 +207,15 @@
 
 .photoCol {
   position: relative;
-  align-self: stretch;
-  min-height: 240px;
+  align-self: start;
+  width: 100%;
   overflow: visible;
 }
 
 .photoWrap {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
   border-radius: 24px;
   overflow: hidden;
   background: var(--warm-grey);
@@ -329,7 +330,6 @@
 
   .photoCol {
     order: -1;
-    min-height: 260px;
   }
 
   .clip {

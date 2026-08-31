@@ -84,7 +84,7 @@ export default function TeachersSection({
                     src={teacher.photo}
                     alt={teacher.fullName}
                     fill
-                    sizes="(max-width: 900px) 42vw, 240px"
+                    sizes="(max-width: 560px) 100vw, (max-width: 900px) 42vw, 240px"
                     className={styles.photo}
                   />
                 </div>

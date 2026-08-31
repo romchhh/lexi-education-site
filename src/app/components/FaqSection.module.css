@@ -2,7 +2,7 @@
   position: relative;
   padding: clamp(72px, 10vw, 120px) var(--hero-pad);
   background: var(--white);
-  overflow: hidden;
+  overflow-x: clip;
   border-top: 1px solid var(--color-line);
 }
 
@@ -27,9 +27,10 @@
 }
 
 .header {
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   position: sticky;
-  top: 110px;
+  top: clamp(96px, 12vw, 120px);
+  align-self: start;
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .heading {
@@ -55,6 +56,13 @@
   color: var(--color-muted);
   max-width: 32ch;
   font-weight: 600;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
 }
 
 .list {
@@ -129,6 +137,61 @@
   color: var(--graphite);
 }
 
+.telegramCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: clamp(22px, 3vw, 28px);
+  border-radius: 24px;
+  background: var(--warm-grey);
+  border: 1.5px solid rgba(31, 31, 31, 0.08);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.telegramLabel {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--graphite);
+  line-height: 1.15;
+}
+
+.telegramText {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.telegramBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  background: var(--rose);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(196, 90, 117, 0.3);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.telegramBtn:hover {
+  background: #b04e68;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 900px) {
   .section {
     padding: clamp(56px, 12vw, 80px) var(--hero-pad);
@@ -170,5 +233,9 @@
 
   .answer p {
     max-width: 100%;
+  }
+
+  .telegramBtn {
+    width: 100%;
   }
 }

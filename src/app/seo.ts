@@ -86,27 +86,27 @@ export const PAGE_SEO = {
     path: '/',
     keywords: SITE.keywords,
   },
-  english: {
-    title: 'Англійська мова для дітей у Львові',
+  german: {
+    title: 'Німецька мова для дітей у Львові',
     description:
-      'Курси англійської для дітей у LEXI.education — мінігрупи до 6 учнів, гра, живе спілкування та безкоштовне пробне заняття. Формати, ціни, викладачі.',
-    path: '/napryamy/angliiska',
+      'Курси німецької для дітей у LEXI.education — мінігрупи до 6 учнів, гра, живе спілкування, Sprachklub та безкоштовне пробне заняття. Формати, ціни, викладачі.',
+    path: '/napryamy/nimetska',
     keywords: [
-      'англійська для дітей Львів',
-      'курси англійської дітям',
-      'англійська мінігрупи',
-      'школа англійської Львів',
-      'LEXI education англійська',
+      'німецька для дітей Львів',
+      'курси німецької дітям',
+      'німецька мінігрупи',
+      'школа німецької Львів',
+      'LEXI education німецька',
     ],
   },
   teachers: {
-    title: 'Викладачі англійської',
+    title: 'Викладачі німецької',
     description:
-      'Команда викладачів LEXI.education у Львові — досвід роботи з дітьми, Cambridge, розмовна практика та підготовка до іспитів.',
+      'Команда викладачів LEXI.education у Львові — досвід роботи з дітьми, Goethe-Zertifikat, Sprachklub та підготовка до іспитів.',
     path: '/vykladachi',
     keywords: [
-      'викладачі англійської Львів',
-      'репетитори англійської для дітей',
+      'викладачі німецької Львів',
+      'репетитори німецької для дітей',
       'вчителі LEXI education',
     ],
   },
@@ -116,7 +116,7 @@ export const PAGE_SEO = {
       'Відповіді про пробне заняття, формати навчання, розмір груп, пакети зі знижкою та запис у школу іноземних мов LEXI.education у Львові.',
     path: '/faq',
     keywords: [
-      'питання курси англійської',
+      'питання курси німецької',
       'формати навчання LEXI',
       'скільки дітей у групі',
     ],
@@ -129,8 +129,20 @@ export const PAGE_SEO = {
     keywords: [
       'LEXI education контакти',
       'школа іноземних мов Львів адреса',
-      'запис на англійську Львів',
+      'запис на німецьку Львів',
     ],
+  },
+  oferta: {
+    title: 'Публічна оферта',
+    description:
+      'Публічна оферта LEXI.education — умови надання освітніх послуг, пробне заняття, оплата, перенесення та скасування занять.',
+    path: '/oferta',
+  },
+  privacy: {
+    title: 'Політика конфіденційності',
+    description:
+      'Політика конфіденційності LEXI.education — як ми збираємо, використовуємо та захищаємо персональні дані учнів і відвідувачів сайту.',
+    path: '/polityka-konfidentsiynosti',
   },
 } as const satisfies Record<string, PageSeoConfig>
 
@@ -287,7 +299,7 @@ export function courseJsonLd({
     url: absoluteUrl(path),
     provider: { '@id': `${SITE.url}/#organization` },
     inLanguage: 'uk-UA',
-    teaches: 'English language',
+    teaches: 'German language',
     educationalLevel: 'Beginner to Advanced',
     availableLanguage: 'uk',
     offers: {

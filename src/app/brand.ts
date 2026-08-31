@@ -1,7 +1,7 @@
 export const BRAND = {
   name: 'LEXI.education',
   shortName: 'lexi',
-  headline: ['Англійська для дітей', 'у невеликих групах', 'зі стартом уже цього тижня'],
+  headline: ['Німецька для дітей', 'у невеликих групах', 'зі стартом уже цього тижня'],
   highlight: 'невеликих групах',
   role: 'Школа іноземних мов у Львові. Живе спілкування, гра й результат уже з перших занять — для дітей будь-якого рівня.',
   phone: '+380 67 000 00 00',
@@ -371,32 +371,32 @@ export const FAQ = [
   },
   {
     q: 'Якими мовами можна навчатися?',
-    a: 'Зараз відкритий напрям англійської мови. Німецька та французька з’являться незабаром — слідкуйте за оновленнями на сайті.',
+    a: 'Зараз відкритий напрям німецької мови. Англійська та французька з’являться незабаром — слідкуйте за оновленнями на сайті.',
   },
 ] as const
 
 export const DIRECTIONS = [
-  {
-    id: 'english',
-    slug: 'angliiska',
-    title: 'Англійська',
-    titleEn: 'English',
-    flag: '🇬🇧',
-    tagline: 'Мова, якою говорить світ',
-    blurb:
-      'Гра, живе спілкування та впевненість уже з перших занять — для дітей будь-якого рівня.',
-    meta: 'Відкрито',
-    href: '/napryamy/angliiska',
-    available: true,
-  },
   {
     id: 'german',
     slug: 'nimetska',
     title: 'Німецька',
     titleEn: 'Deutsch',
     flag: '🇩🇪',
+    tagline: 'Мова можливостей',
+    blurb:
+      'Гра, живе спілкування та впевненість уже з перших занять — для дітей будь-якого рівня.',
+    meta: 'Відкрито',
+    href: '/napryamy/nimetska',
+    available: true,
+  },
+  {
+    id: 'english',
+    slug: 'angliiska',
+    title: 'Англійська',
+    titleEn: 'English',
+    flag: '🇬🇧',
     tagline: 'Незабаром',
-    blurb: 'Готуємо напрям німецької — напишіть нам, якщо хочете потрапити в лист очікування.',
+    blurb: 'Англійський напрям з’явиться трохи пізніше. Залиште контакти — повідомимо першими.',
     meta: 'Soon',
     href: '/kontakty',
     available: false,
@@ -415,14 +415,14 @@ export const DIRECTIONS = [
   },
 ] as const
 
-export const ENGLISH_DIRECTION = {
-  slug: 'angliiska',
-  title: 'Англійська',
-  titleEn: 'English',
-  flag: '🇬🇧',
-  heroTitle: 'Англійська',
+export const GERMAN_DIRECTION = {
+  slug: 'nimetska',
+  title: 'Німецька',
+  titleEn: 'Deutsch',
+  flag: '🇩🇪',
+  heroTitle: 'Німецька',
   heroTitleEm: 'вільно!',
-  heroTagline: 'Мова, якою говорить світ',
+  heroTagline: 'Мова можливостей і нових горизонтів',
   heroLead:
     'Гра, живе спілкування та впевненість уже з перших занять — для дітей будь-якого рівня.',
   processTitle: 'Як проходитиме навчання?',
@@ -447,8 +447,8 @@ export const ENGLISH_DIRECTION = {
     },
     {
       id: 'speaking',
-      title: 'Speaking Club',
-      text: 'Окремі розмовні зустрічі, де дитина тренує впевненість говорити англійською.',
+      title: 'Sprachklub',
+      text: 'Окремі розмовні зустрічі, де дитина тренує впевненість говорити німецькою.',
       tone: 'graphite',
     },
     {
@@ -471,11 +471,11 @@ export const TEACHERS = [
     id: 'olena',
     name: 'Олена',
     fullName: 'Олена Коваль',
-    language: 'Англійська',
-    flag: '🇬🇧',
+    language: 'Німецька',
+    flag: '🇩🇪',
     level: 'C1',
     experience: '6 років',
-    bio: 'Спеціалізується на Young Learners. Ігрові методики, Cambridge Starters–Movers, тепла атмосфера для дошкільнят і молодшої школи.',
+    bio: 'Спеціалізується на Young Learners. Ігрові методики, Goethe-Zertifikat A1–A2, тепла атмосфера для дошкільнят і молодшої школи.',
     photo:
       'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
   },
@@ -483,11 +483,11 @@ export const TEACHERS = [
     id: 'andrii',
     name: 'Андрій',
     fullName: 'Андрій Мельник',
-    language: 'Англійська',
-    flag: '🇬🇧',
+    language: 'Німецька',
+    flag: '🇩🇪',
     level: 'C2',
     experience: '8 років',
-    bio: 'Працює з підлітками: розмовна практика, шкільні іспити та DPA. Допомагає говорити впевнено без страху помилки.',
+    bio: 'Працює з підлітками: розмовна практика, Goethe-Zertifikat та TestDaF. Допомагає говорити впевнено без страху помилки.',
     photo:
       'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80',
   },
@@ -495,11 +495,11 @@ export const TEACHERS = [
     id: 'maria',
     name: 'Марія',
     fullName: 'Марія Шевченко',
-    language: 'Англійська',
-    flag: '🇬🇧',
+    language: 'Німецька',
+    flag: '🇩🇪',
     level: 'C1',
     experience: '5 років',
-    bio: 'Cambridge і IELTS foundation, академічне письмо та вимова. Готує до іспитів системно й без зайвого стресу.',
+    bio: 'Goethe-Zertifikat і DSD, академічне письмо та вимова. Готує до іспитів системно й без зайвого стресу.',
     photo:
       'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80',
   },
@@ -507,18 +507,18 @@ export const TEACHERS = [
     id: 'sofia',
     name: 'Софія',
     fullName: 'Софія Бондар',
-    language: 'Англійська',
-    flag: '🇬🇧',
+    language: 'Німецька',
+    flag: '🇩🇪',
     level: 'C1',
     experience: '4 роки',
-    bio: 'Speaking Club і fluency. Особливо добре працює з сором’язливими дітьми — повертає радість говорити англійською.',
+    bio: 'Sprachklub і розмовна практика. Особливо добре працює з сором’язливими дітьми — повертає радість говорити німецькою.',
     photo:
       'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=800&q=80',
   },
 ] as const
 
 export const TEACHER_LANG_TABS = [
-  { id: 'en', label: 'Англійська', flag: '🇬🇧', active: true },
-  { id: 'de', label: 'Німецька', flag: '🇩🇪', active: false },
+  { id: 'de', label: 'Німецька', flag: '🇩🇪', active: true },
+  { id: 'en', label: 'Англійська', flag: '🇬🇧', active: false },
   { id: 'fr', label: 'Французька', flag: '🇫🇷', active: false },
 ] as const

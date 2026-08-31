@@ -1,4 +1,4 @@
-import { ENGLISH_DIRECTION } from '../brand'
+import { GERMAN_DIRECTION } from '../brand'
 import EnrollButton from './EnrollButton'
 import PricingSection from './PricingSection'
 import TeachersSection from './TeachersSection'
@@ -14,7 +14,7 @@ const TONE_CLASS = {
 } as const
 
 export default function EnglishDirection() {
-  const data = ENGLISH_DIRECTION
+  const data = GERMAN_DIRECTION
 
   return (
     <article className={styles.page}>
@@ -57,7 +57,7 @@ export default function EnglishDirection() {
       </section>
 
       <PricingSection />
-      <TeachersSection language="Англійська" showTabs={false} headingAs="h2" />
+      <TeachersSection language="Німецька" showTabs={false} headingAs="h2" />
     </article>
   )
 }
