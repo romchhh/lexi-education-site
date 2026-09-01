@@ -1,5 +1,6 @@
 'use client'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import type { BrandContent, NavItem } from '@/lib/content/types'
 import { getDefaultContent } from '@/lib/content/defaults'
@@ -49,7 +50,7 @@ export default function Navbar({
   return (
     <>
       <nav className={`${styles.nav} ${transparent && !scrolled ? styles.transparent : styles.solid}`}>
-        <a href="/" className={styles.brand}>
+        <Link href="/" className={styles.brand}>
           <Image
             src={brand.logo}
             alt={brand.name}
@@ -58,7 +59,7 @@ export default function Navbar({
             priority
             className={styles.brandLogo}
           />
-        </a>
+        </Link>
 
         <div className={styles.center}>
           {nav.map((item) => (
@@ -91,7 +92,7 @@ export default function Navbar({
             <path d="M4 4 L24 24 M24 4 L4 24" />
           </svg>
         </button>
-        <a href="/" className={styles.drawerLogo} onClick={() => setMenuOpen(false)}>
+        <Link href="/" className={styles.drawerLogo} onClick={() => setMenuOpen(false)}>
           <Image
             src={brand.logo}
             alt={brand.name}
@@ -99,7 +100,7 @@ export default function Navbar({
             height={84}
             className={styles.drawerLogoImg}
           />
-        </a>
+        </Link>
         {nav.map((item) => (
           <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
             {item.label}

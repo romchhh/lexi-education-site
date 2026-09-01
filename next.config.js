@@ -6,9 +6,7 @@ const nextConfig = {
     ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
     ADMIN_USERNAME: process.env.ADMIN_USERNAME,
   },
-  experimental: {
-    serverComponentsExternalPackages: ['better-sqlite3'],
-  },
+  serverExternalPackages: ['better-sqlite3'],
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },

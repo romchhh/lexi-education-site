@@ -51,7 +51,7 @@ export function readContentCache(): SiteContent | null {
 export function refreshContentCache(): SiteContent {
   const content = buildContentBundle()
   writeContentCache(content)
-  revalidateTag(CONTENT_CACHE_TAG)
+  revalidateTag(CONTENT_CACHE_TAG, 'max')
   revalidatePath('/', 'layout')
   return content
 }

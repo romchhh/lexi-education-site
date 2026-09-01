@@ -19,7 +19,7 @@ export default function FloatingEnroll() {
 
   useEffect(() => {
     setMounted(true)
-    setPortalRoot(document.querySelector('.lexi'))
+    setPortalRoot(document.querySelector('.lexi') as HTMLElement | null)
   }, [])
 
   useEffect(() => {
