@@ -58,17 +58,17 @@ export default function FaqSection({
               )
             })}
           </div>
+        </div>
 
-          <div className={styles.telegramCard}>
-            <p className={styles.telegramLabel}>{content.telegramLabel}</p>
-            <p className={styles.telegramText}>{content.telegramText}</p>
-            <a href={brand.telegram} className={styles.telegramBtn} target="_blank" rel="noreferrer">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.49.24l.17-2.43 4.45-4.02c.19-.17-.04-.27-.3-.1l-5.5 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.27-3.57c.43-.16.8.1.55.79z" />
-              </svg>
-              <span>{content.telegramBtn}</span>
-            </a>
-          </div>
+        <div className={styles.telegramCard} data-reveal style={{ ['--reveal-delay' as string]: '240ms' }}>
+          <p className={styles.telegramLabel}>{content.telegramLabel}</p>
+          <p className={styles.telegramText}>{content.telegramText}</p>
+          <a href={brand.telegram} className={styles.telegramBtn} target="_blank" rel="noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8-1.56 7.36c-.12.54-.43.67-.87.42l-2.4-1.77-1.16 1.12c-.13.13-.24.24-.49.24l.17-2.43 4.45-4.02c.19-.17-.04-.27-.3-.1l-5.5 3.46-2.37-.74c-.51-.16-.52-.51.11-.76l9.27-3.57c.43-.16.8.1.55.79z" />
+            </svg>
+            <span>{content.telegramBtn}</span>
+          </a>
         </div>
       </div>
     </section>

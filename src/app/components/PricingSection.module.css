@@ -60,10 +60,10 @@
   gap: 20px 24px;
   padding: 28px 24px 22px;
   margin-bottom: clamp(24px, 3.5vw, 32px);
-  background: linear-gradient(120deg, rgba(232, 184, 194, 0.35) 0%, var(--white) 55%);
-  border: 1.5px solid rgba(196, 90, 117, 0.28);
+  background: var(--rose);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
   border-radius: 22px;
-  box-shadow: 0 14px 40px rgba(31, 31, 31, 0.08);
+  box-shadow: 0 14px 40px rgba(196, 90, 117, 0.35);
 }
 
 .freeTag {
@@ -76,8 +76,8 @@
   gap: 6px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: var(--rose);
-  color: var(--white);
+  background: var(--white);
+  color: var(--rose);
   font-family: var(--font-display);
   font-size: 14px;
   font-weight: 700;
@@ -85,7 +85,7 @@
   text-transform: uppercase;
   line-height: 1;
   transform: rotate(4deg);
-  box-shadow: 0 8px 22px rgba(196, 90, 117, 0.35);
+  box-shadow: 0 8px 22px rgba(31, 31, 31, 0.12);
 }
 
 .trialBadge {
@@ -95,8 +95,8 @@
   height: 72px;
   padding: 0 10px;
   border-radius: 18px;
-  background: var(--graphite);
-  color: var(--white);
+  background: var(--white);
+  color: var(--rose);
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 700;
@@ -116,14 +116,14 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  color: var(--color-text);
+  color: var(--white);
 }
 
 .trialCopy p {
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
 }
 
@@ -134,19 +134,20 @@
   padding: 8px 10px 8px 22px;
   border: none;
   border-radius: var(--radius-pill);
-  background: var(--graphite);
-  color: var(--white);
+  background: var(--white);
+  color: var(--graphite);
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   flex-shrink: 0;
-  box-shadow: 0 8px 26px rgba(31, 31, 31, 0.22);
-  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 8px 26px rgba(31, 31, 31, 0.14);
+  transition: background 0.2s, color 0.2s, transform 0.15s;
 }
 
 .trialCta:hover {
-  background: var(--rose);
+  background: var(--graphite);
+  color: var(--white);
   transform: translateY(-1px);
 }
 
