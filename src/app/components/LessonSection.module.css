@@ -1,7 +1,7 @@
 .section {
   position: relative;
   padding: clamp(72px, 10vw, 120px) var(--hero-pad);
-  background: var(--white);
+  background: linear-gradient(180deg, var(--white) 0%, #faf7f5 100%);
   overflow: hidden;
   border-top: 1px solid var(--color-line);
 }
@@ -25,7 +25,6 @@
 .header {
   max-width: 34rem;
   margin-bottom: clamp(40px, 6vw, 64px);
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .heading {
@@ -67,7 +66,6 @@
   gap: 18px;
   padding-top: 22px;
   border-top: 2px solid var(--rose);
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .step p {

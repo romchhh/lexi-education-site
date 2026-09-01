@@ -1,30 +1,34 @@
-import { FORMATS } from '../brand'
+import type { FormatsContent } from '@/lib/content/types'
+import { getDefaultContent } from '@/lib/content/defaults'
 import styles from './FormatsSection.module.css'
 
 const BADGE_TILTS = [styles.tiltA, styles.tiltB, styles.tiltC, styles.tiltD, styles.tiltE, styles.tiltF] as const
 
-export default function FormatsSection() {
+type Props = {
+  content?: FormatsContent
+}
+
+export default function FormatsSection({ content = getDefaultContent().formats }: Props) {
   return (
     <section id="formaty" className={styles.section}>
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.inner}>
-        <header className={styles.header}>
+        <header className={`${styles.header} reveal-heading`} data-reveal>
           <h2 className={styles.heading}>
-            Формати
+            {content.heading.line1}
             <br />
-            <em>навчання</em>
+            <em>{content.heading.line2Em}</em>
           </h2>
-          <p className={styles.lead}>
-            Від індивідуальних занять до розмовного клубу — обирайте темп і формат,
-            який підходить саме вам. Або почніть із безкоштовного пробного заняття.
-          </p>
+          <p className={styles.lead}>{content.lead}</p>
         </header>
 
         <div className={styles.grid}>
-          {FORMATS.map((format, index) => (
+          {content.items.map((format, index) => (
             <article
               key={format.id}
-              className={`${styles.card} ${'accent' in format && format.accent ? styles.accent : ''}`}
+              className={`${styles.card} ${format.accent ? styles.accent : ''}`}
+              data-reveal
+              style={{ ['--reveal-delay' as string]: `${index * 70}ms` }}
             >
               <span className={`${styles.badge} ${BADGE_TILTS[index % BADGE_TILTS.length]}`}>
                 {format.meta}

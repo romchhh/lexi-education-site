@@ -1,0 +1,65 @@
+.dropzone {
+  border: 2px dashed rgba(30, 28, 26, 0.16);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  background: rgba(247, 243, 240, 0.6);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropzone:hover,
+.dropzoneActive {
+  border-color: rgba(196, 90, 117, 0.55);
+  background: rgba(196, 90, 117, 0.06);
+}
+
+.dropzoneUploading {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.dropzoneError {
+  border-color: rgba(196, 74, 74, 0.5);
+  background: rgba(196, 74, 74, 0.06);
+}
+
+.preview {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--admin-muted, #6b6560);
+  line-height: 1.45;
+}
+
+.hint strong {
+  color: var(--admin-accent, #c45a75);
+}
+
+.subhint {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--admin-muted, #6b6560);
+}
+
+.error {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--admin-danger, #c44a4a);
+}
+
+.urlRow {
+  margin-top: 10px;
+}
+
+.hiddenInput {
+  display: none;
+}

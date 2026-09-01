@@ -1,15 +1,21 @@
 import Image from 'next/image'
-import { BRAND, STATS } from '../brand'
+import type { HeroContent } from '@/lib/content/types'
+import { getDefaultContent } from '@/lib/content/defaults'
 import EnrollButton from './EnrollButton'
 import styles from './Hero.module.css'
 
 const GLASS_POS = [styles.glassLeft, styles.glassMid, styles.glassRight] as const
+const DEFAULT_HERO = getDefaultContent().hero
 
 function statLines(label: string): string[] {
   return label.split(' ')
 }
 
-export default function Hero() {
+type Props = {
+  hero?: HeroContent
+}
+
+export default function Hero({ hero = DEFAULT_HERO }: Props) {
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.bgGlow} aria-hidden="true" />
@@ -18,23 +24,22 @@ export default function Hero() {
       <div className={styles.body}>
         <div className={styles.copy}>
           <h1 className={styles.headline}>
-            {BRAND.headline[0]}
+            {hero.headlineLine1}
             <br />
-            у <em>{BRAND.highlight}</em>
+            {hero.headlineMiddle}
+            <em>{hero.highlight}</em>
             <br />
-            {BRAND.headline[2]}
+            {hero.headlineLine3}
           </h1>
-          <p className={styles.role}>{BRAND.role}</p>
-          <EnrollButton className={styles.heroCta}>
-            Записатись на заняття
-          </EnrollButton>
+          <p className={styles.role}>{hero.role}</p>
+          <EnrollButton className={styles.heroCta}>{hero.cta}</EnrollButton>
         </div>
 
         <div className={styles.portrait}>
           <div className={styles.portraitGlow} aria-hidden="true" />
           <Image
-            src={BRAND.heroImage}
-            alt="Заняття у школі іноземних мов LEXI.education"
+            src={hero.heroImage}
+            alt={hero.heroImageAlt}
             fill
             priority
             sizes="(max-width: 768px) 100vw, 55vw"
@@ -43,7 +48,7 @@ export default function Hero() {
         </div>
 
         <div className={styles.glassCells} aria-label="Про школу">
-          {STATS.map((stat, index) => (
+          {hero.stats.map((stat, index) => (
             <div key={stat.label} className={`${styles.glassCard} ${GLASS_POS[index]}`}>
               <span className={styles.glassOrb} aria-hidden="true" />
               <div className={styles.glassRow}>

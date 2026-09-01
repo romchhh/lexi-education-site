@@ -1,7 +1,7 @@
 import { BRAND } from './brand'
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://lexi.education'
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://lexieducation.com.ua'
 
 export const SITE = {
   url: SITE_URL,

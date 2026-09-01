@@ -1,19 +1,28 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { BRAND, NAV } from '../brand'
+import type { BrandContent, NavItem } from '@/lib/content/types'
+import { getDefaultContent } from '@/lib/content/defaults'
 import { LEGAL_LINKS } from '../legal'
 import styles from './Footer.module.css'
 
-export default function Footer() {
+type Props = {
+  brand?: BrandContent
+  nav?: NavItem[]
+}
+
+export default function Footer({
+  brand = getDefaultContent().brand,
+  nav = getDefaultContent().nav,
+}: Props) {
   return (
     <footer className={styles.footer}>
-      <div className={styles.top}>
+      <div className={styles.top} data-reveal="fade">
         <div className={styles.brandBlock}>
           <Image
-            src={BRAND.logo}
-            alt={BRAND.name}
-            width={180}
-            height={60}
+            src={brand.logo}
+            alt={brand.name}
+            width={96}
+            height={96}
             className={styles.brandLogo}
           />
           <p className={styles.tag}>Школа іноземних мов у Львові</p>
@@ -28,16 +37,16 @@ export default function Footer() {
           <div className={styles.col}>
             <h3>Контакти</h3>
             <p>
-              {BRAND.address}
+              {brand.address}
               <br />
-              {BRAND.city}
+              {brand.city}
             </p>
-            <p>{BRAND.phone}</p>
-            <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+            <a href={`tel:${brand.phone.replace(/\s/g, '')}`}>{brand.phone}</a>
+            <a href={`mailto:${brand.email}`}>{brand.email}</a>
           </div>
           <div className={styles.col}>
             <h3>Навігація</h3>
-            {NAV.map((item) => (
+            {nav.map((item) => (
               <a key={item.href} href={item.href}>{item.label}</a>
             ))}
           </div>

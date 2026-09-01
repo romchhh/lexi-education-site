@@ -1,21 +1,38 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import type { BrandContent, NavItem } from '@/lib/content/types'
+import { getDefaultContent } from '@/lib/content/defaults'
+import AnalyticsBeacon from './AnalyticsBeacon'
 import { EnrollProvider } from './EnrollContext'
-import EnrollModal from './EnrollModal'
-import FloatingEnroll from './FloatingEnroll'
 import Footer from './Footer'
 import Navbar from './Navbar'
+import ScrollRevealInit from './ScrollRevealInit'
 
-export default function SiteShell({ children }: { children: React.ReactNode }) {
+import EnrollModal from './EnrollModal'
+import FloatingEnroll from './FloatingEnroll'
+
+type Props = {
+  children: React.ReactNode
+  brand?: BrandContent
+  nav?: NavItem[]
+}
+
+export default function SiteShell({
+  children,
+  brand = getDefaultContent().brand,
+  nav = getDefaultContent().nav,
+}: Props) {
   const pathname = usePathname()
   const transparent = pathname === '/'
 
   return (
     <EnrollProvider>
-      <Navbar transparent={transparent} />
+      <ScrollRevealInit />
+      <AnalyticsBeacon />
+      <Navbar transparent={transparent} brand={brand} nav={nav} />
       {children}
-      <Footer />
+      <Footer brand={brand} nav={nav} />
       <FloatingEnroll />
       <EnrollModal />
     </EnrollProvider>

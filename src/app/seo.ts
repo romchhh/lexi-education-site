@@ -124,7 +124,7 @@ export const PAGE_SEO = {
   contacts: {
     title: 'Контакти та запис',
     description:
-      'Запишіться на безкоштовне заняття в LEXI.education: телефон, email, адреса школи у Львові (вул. Січових Стрільців 12). Пн–Пт 9:00–19:00.',
+      `Запишіться на безкоштовне заняття в LEXI.education: ${BRAND.phone}, ${BRAND.email}, ${BRAND.address}, ${BRAND.city}. Пн–Пт 9:00–19:00.`,
     path: '/kontakty',
     keywords: [
       'LEXI education контакти',

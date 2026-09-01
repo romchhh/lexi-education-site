@@ -1,18 +1,30 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { BRAND, NAV } from '../brand'
+import type { BrandContent, NavItem } from '@/lib/content/types'
+import { getDefaultContent } from '@/lib/content/defaults'
 import { useEnroll } from './EnrollContext'
 import styles from './Navbar.module.css'
 
-export default function Navbar({ transparent = false }: { transparent?: boolean }) {
+type Props = {
+  transparent?: boolean
+  brand?: BrandContent
+  nav?: NavItem[]
+}
+
+export default function Navbar({
+  transparent = false,
+  brand = getDefaultContent().brand,
+  nav = getDefaultContent().nav,
+}: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { open, openEnroll } = useEnroll()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -39,24 +51,24 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
       <nav className={`${styles.nav} ${transparent && !scrolled ? styles.transparent : styles.solid}`}>
         <a href="/" className={styles.brand}>
           <Image
-            src={BRAND.logo}
-            alt={BRAND.name}
-            width={180}
-            height={60}
+            src={brand.logo}
+            alt={brand.name}
+            width={84}
+            height={84}
             priority
             className={styles.brandLogo}
           />
         </a>
 
         <div className={styles.center}>
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <a key={item.href} href={item.href}>{item.label}</a>
           ))}
         </div>
 
         <div className={styles.right}>
           <button type="button" className={styles.cta} onClick={openEnroll}>
-            Записатись
+            {brand.navCta}
             <span className={styles.ctaIcon} aria-hidden="true">
               <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 12 L12 2 M5 2 H12 V9" />
@@ -81,14 +93,14 @@ export default function Navbar({ transparent = false }: { transparent?: boolean 
         </button>
         <a href="/" className={styles.drawerLogo} onClick={() => setMenuOpen(false)}>
           <Image
-            src={BRAND.logo}
-            alt={BRAND.name}
-            width={180}
-            height={60}
+            src={brand.logo}
+            alt={brand.name}
+            width={84}
+            height={84}
             className={styles.drawerLogoImg}
           />
         </a>
-        {NAV.map((item) => (
+        {nav.map((item) => (
           <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
             {item.label}
           </a>

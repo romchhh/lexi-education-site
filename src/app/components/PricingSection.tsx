@@ -1,47 +1,49 @@
 'use client'
 
 import { useState } from 'react'
+import type { PricingContent } from '@/lib/content/types'
+import { getDefaultContent } from '@/lib/content/defaults'
 import EnrollButton from './EnrollButton'
-import {
-  EXAM_PRICES,
-  PACKAGES,
-  PRICING_INTRO,
-  PRICING_TABS,
-} from '../brand'
 import styles from './PricingSection.module.css'
 
-export default function PricingSection() {
-  const [activeId, setActiveId] = useState(PRICING_TABS[0].id)
-  const active = PRICING_TABS.find((tab) => tab.id === activeId) ?? PRICING_TABS[0]
-  const isExams = active.id === 'exams'
+type Props = {
+  pricing?: PricingContent
+}
+
+export default function PricingSection({ pricing = getDefaultContent().pricing }: Props) {
+  const [activeId, setActiveId] = useState(pricing.tabs[0]?.id ?? 'individual')
+  const active = pricing.tabs.find((tab) => tab.id === activeId) ?? pricing.tabs[0]
+  const isExams = active?.id === 'exams'
+
+  if (!active) return null
 
   return (
     <section id="ciny" className={styles.section}>
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.inner}>
-        <header className={styles.header}>
+        <header className={`${styles.header} reveal-heading`} data-reveal>
           <h2 className={styles.heading}>
-            Вартість
+            {pricing.heading.line1}
             <br />
-            <em>навчання</em>
+            <em>{pricing.heading.line2Em}</em>
           </h2>
-          <p className={styles.lead}>{PRICING_INTRO}</p>
+          <p className={styles.lead}>{pricing.intro}</p>
         </header>
 
-        <div className={styles.trial}>
+        <div className={styles.trial} data-reveal="scale" style={{ ['--reveal-delay' as string]: '80ms' }}>
           <span className={styles.freeTag} aria-hidden="true">
-            🔥 FREE
+            {pricing.trialBadge}
           </span>
-          <div className={styles.trialBadge}>0 грн</div>
+          <div className={styles.trialBadge}>{pricing.trialPrice}</div>
           <div className={styles.trialCopy}>
-            <h3>Пробне заняття — безкоштовно</h3>
-            <p>Визначимо рівень, обговоримо цілі та підберемо формат.</p>
+            <h3>{pricing.trialTitle}</h3>
+            <p>{pricing.trialText}</p>
           </div>
-          <EnrollButton className={styles.trialCta}>Записатись</EnrollButton>
+          <EnrollButton className={styles.trialCta}>{pricing.trialCta}</EnrollButton>
         </div>
 
-        <div className={styles.tabs} role="tablist" aria-label="Формати цін">
-          {PRICING_TABS.map((tab) => (
+        <div className={styles.tabs} role="tablist" aria-label="Формати цін" data-reveal="fade" style={{ ['--reveal-delay' as string]: '140ms' }}>
+          {pricing.tabs.map((tab) => (
             <button
               key={tab.id}
               type="button"
@@ -55,7 +57,7 @@ export default function PricingSection() {
           ))}
         </div>
 
-        <div className={styles.panel} role="tabpanel">
+        <div className={styles.panel} role="tabpanel" data-reveal style={{ ['--reveal-delay' as string]: '180ms' }}>
           <div className={styles.panelHead}>
             <h3>{active.title}</h3>
             <p className={styles.subtitle}>{active.subtitle}</p>
@@ -64,11 +66,11 @@ export default function PricingSection() {
 
           {isExams ? (
             <div className={styles.priceList}>
-              {EXAM_PRICES.rows.map((row) => (
+              {pricing.examPrices.rows.map((row) => (
                 <div key={row[0]} className={styles.priceRow}>
                   <span className={styles.rowLabel}>{row[0]}</span>
                   <div className={styles.examLevels}>
-                    {EXAM_PRICES.headers.slice(1).map((level, i) => (
+                    {pricing.examPrices.headers.slice(1).map((level, i) => (
                       <span key={level} className={styles.examLevel}>
                         <span>{level}</span>
                         <strong>{row[i + 1]}</strong>
@@ -102,34 +104,28 @@ export default function PricingSection() {
             </div>
           )}
 
-          {active.id === 'combo' ? (
-            <p className={styles.comboNote}>
-              При навчанні 2 рази на тиждень у кожному форматі — до 16 занять на місяць.
-            </p>
-          ) : null}
+          {active.id === 'combo' ? <p className={styles.comboNote}>{pricing.comboNote}</p> : null}
         </div>
 
         <div className={styles.packages}>
-          <p className={styles.packagesTitle}>Пакети зі знижкою</p>
+          <p className={styles.packagesTitle}>{pricing.packagesTitle}</p>
           <div className={styles.packageChips}>
-            {PACKAGES.standard.map((item) => (
+            {pricing.packages.standard.map((item) => (
               <span key={item.name} className={styles.chip}>
                 {item.name}
                 <strong>{item.discount === '—' ? '0%' : item.discount}</strong>
               </span>
             ))}
           </div>
-          <p className={styles.packagesHint}>
-            Sprachklub: 8 занять −5% · 12 занять −8%
-          </p>
+          <p className={styles.packagesHint}>{pricing.packagesHint}</p>
         </div>
 
-        <div className={styles.help}>
+        <div className={styles.help} data-reveal style={{ ['--reveal-delay' as string]: '240ms' }}>
           <div>
-            <h3>Не знаєте, який формат обрати?</h3>
-            <p>Почніть із безкоштовного пробного заняття.</p>
+            <h3>{pricing.helpTitle}</h3>
+            <p>{pricing.helpText}</p>
           </div>
-          <EnrollButton className={styles.helpCta}>Записатись на пробне</EnrollButton>
+          <EnrollButton className={styles.helpCta}>{pricing.helpCta}</EnrollButton>
         </div>
       </div>
     </section>

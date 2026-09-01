@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { BRAND } from './brand'
-import SiteShell from './components/SiteShell'
 import { SITE } from './site'
 import './globals.css'
-import './lexi.css'
 
 export const viewport: Viewport = {
   themeColor: '#c45a75',
@@ -88,11 +86,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="uk">
-      <body>
-        <div className="lexi">
-          <SiteShell>{children}</SiteShell>
-        </div>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

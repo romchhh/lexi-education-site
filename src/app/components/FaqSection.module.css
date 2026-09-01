@@ -30,7 +30,6 @@
   position: sticky;
   top: clamp(96px, 12vw, 120px);
   align-self: start;
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .heading {
@@ -73,7 +72,6 @@
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 16px 44px rgba(31, 31, 31, 0.1);
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
 .item {
@@ -144,9 +142,21 @@
   gap: 12px;
   padding: clamp(22px, 3vw, 28px);
   border-radius: 24px;
-  background: var(--warm-grey);
-  border: 1.5px solid rgba(31, 31, 31, 0.08);
-  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  background: var(--white);
+  border: 1.5px solid rgba(31, 31, 31, 0.1);
+  box-shadow: 0 12px 36px rgba(31, 31, 31, 0.08);
+}
+
+@media (min-width: 901px) {
+  .telegramCard {
+    align-items: center;
+    text-align: center;
+    padding: clamp(28px, 3.5vw, 36px) clamp(32px, 4vw, 48px);
+  }
+
+  .telegramText {
+    max-width: 36ch;
+  }
 }
 
 .telegramLabel {

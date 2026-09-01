@@ -1,27 +1,34 @@
-import { LESSON_STEPS } from '../brand'
+import type { LessonContent } from '@/lib/content/types'
+import { getDefaultContent } from '@/lib/content/defaults'
 import EnrollButton from './EnrollButton'
 import styles from './LessonSection.module.css'
 
-export default function LessonSection() {
+type Props = {
+  content?: LessonContent
+}
+
+export default function LessonSection({ content = getDefaultContent().lesson }: Props) {
   return (
     <section id="urok" className={styles.section}>
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.inner}>
-        <header className={styles.header}>
+        <header className={`${styles.header} reveal-heading`} data-reveal>
           <h2 className={styles.heading}>
-            Почніть із
+            {content.heading.line1}
             <br />
-            <em>пробного</em>
+            <em>{content.heading.line2Em}</em>
           </h2>
-          <p className={styles.lead}>
-            Пробне заняття — безкоштовне. Ви не повинні самостійно вирішувати,
-            який формат вам потрібен — ми допоможемо підібрати його разом.
-          </p>
+          <p className={styles.lead}>{content.lead}</p>
         </header>
 
         <ol className={styles.steps}>
-          {LESSON_STEPS.map((step) => (
-            <li key={step.num} className={styles.step}>
+          {content.steps.map((step, index) => (
+            <li
+              key={step.num}
+              className={styles.step}
+              data-reveal="left"
+              style={{ ['--reveal-delay' as string]: `${index * 100}ms` }}
+            >
               <span className={styles.num} aria-hidden="true">
                 {step.num}
               </span>
@@ -33,9 +40,9 @@ export default function LessonSection() {
           ))}
         </ol>
 
-        <EnrollButton className={styles.cta}>
-          Записатись на пробне заняття
-        </EnrollButton>
+        <div data-reveal style={{ ['--reveal-delay' as string]: '320ms' }}>
+          <EnrollButton className={styles.cta}>{content.cta}</EnrollButton>
+        </div>
       </div>
     </section>
   )

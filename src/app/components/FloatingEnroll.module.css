@@ -1,10 +1,15 @@
 .wrap {
+  --graphite: #1f1f1f;
+  --white: #ffffff;
+  --rose: #c45a75;
+  --color-muted: #5f5555;
+  --radius-pill: 999px;
+
   position: fixed;
-  top: auto;
-  left: auto;
   right: 16px;
+  left: auto;
   bottom: 16px;
-  z-index: 90;
+  z-index: 110;
   width: auto;
   margin: 0;
   opacity: 0;
@@ -35,6 +40,7 @@
   flex-direction: column;
   gap: 14px;
   text-align: left;
+  font-family: var(--font-sans);
 }
 
 .close {
@@ -64,6 +70,7 @@
 .text {
   margin: 0;
   padding-right: 22px;
+  font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 600;
   line-height: 1.4;
@@ -82,9 +89,10 @@
   border-radius: var(--radius-pill);
   background: var(--rose);
   color: var(--white);
-  font-family: inherit;
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.02em;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
   box-shadow: 0 8px 22px rgba(196, 90, 117, 0.35);

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { insertApplication } from '@/lib/analytics/index'
 import { buildEnrollTelegramMessage, type EnrollPayload } from '@/lib/enroll-message'
 import { sendTelegramMessage } from '@/lib/telegram'
 
@@ -55,6 +56,19 @@ export async function POST(request: Request) {
     source: optionalString(body.source, 120),
     pageUrl: optionalString(body.pageUrl, 500),
     pageTitle: optionalString(body.pageTitle, 200),
+  }
+
+  try {
+    insertApplication({
+      name: payload.name,
+      phone: payload.phone,
+      email: payload.email,
+      source: payload.source,
+      pageUrl: payload.pageUrl,
+      pageTitle: payload.pageTitle,
+    })
+  } catch (error) {
+    console.error('Failed to save application:', error)
   }
 
   try {
