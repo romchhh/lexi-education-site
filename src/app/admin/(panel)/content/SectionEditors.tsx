@@ -94,11 +94,10 @@ function HeroEditor({ value, onChange }: { value: SiteContent['hero']; onChange:
     <div>
       <div className={ui.card}>
         <h3 className={ui.cardTitle}>Текст Hero</h3>
-        <TextField label="Заголовок — рядок 1" value={value.headlineLine1} onChange={(headlineLine1) => onChange({ ...value, headlineLine1 })} />
-        <TextField label="Текст перед highlight (напр. «у »)" value={value.headlineMiddle} onChange={(headlineMiddle) => onChange({ ...value, headlineMiddle })} />
-        <TextField label="Highlight (підкреслення)" value={value.highlight} onChange={(highlight) => onChange({ ...value, highlight })} />
-        <TextField label="Заголовок — рядок 3" value={value.headlineLine3} onChange={(headlineLine3) => onChange({ ...value, headlineLine3 })} />
-        <TextField label="Підзаголовок" value={value.role} onChange={(role) => onChange({ ...value, role })} multiline />
+        <TextField label="Назва бренду (LEXI Education)" value={value.headlineLine1} onChange={(headlineLine1) => onChange({ ...value, headlineLine1 })} />
+        <TextField label="Слоган (more than words)" value={value.highlight} onChange={(highlight) => onChange({ ...value, highlight })} />
+        <TextField label="Підзаголовок" value={value.headlineLine3} onChange={(headlineLine3) => onChange({ ...value, headlineLine3 })} />
+        <TextField label="Опис" value={value.role} onChange={(role) => onChange({ ...value, role })} multiline />
         <TextField label="Текст кнопки" value={value.cta} onChange={(cta) => onChange({ ...value, cta })} />
         <MediaField label="Hero фото" value={value.heroImage} onChange={(heroImage) => onChange({ ...value, heroImage })} />
         <TextField label="Alt текст фото" value={value.heroImageAlt} onChange={(heroImageAlt) => onChange({ ...value, heroImageAlt })} />

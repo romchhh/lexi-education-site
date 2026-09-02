@@ -6,12 +6,6 @@ import styles from './Hero.module.css'
 
 const DEFAULT_HERO = getDefaultContent().hero
 
-function statLines(label: string): string[] {
-  if (!label) return []
-  if (label.includes('|')) return label.split('|').map((line) => line.trim()).filter(Boolean)
-  return [label]
-}
-
 function StatIcon({ icon }: { icon?: StatItem['icon'] }) {
   if (!icon) return null
 
@@ -53,8 +47,8 @@ function StatIcon({ icon }: { icon?: StatItem['icon'] }) {
   return (
     <span className={styles.statIcon} aria-hidden="true">
       <svg {...common}>
-        <path d="M4 18V8l4-3 4 3v10M14 18V10l4-3 2 1.5V18" />
-        <path d="M8 14h2M8 11h2" />
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
       </svg>
     </span>
   )
@@ -68,32 +62,26 @@ export default function Hero({ hero = DEFAULT_HERO }: Props) {
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.bgGlow} aria-hidden="true" />
-      <div className={styles.bgGlow2} aria-hidden="true" />
 
       <div className={styles.body}>
         <div className={styles.main}>
           <div className={styles.copy}>
-            <h1 className={styles.headline}>
-              {hero.headlineLine1}
-              <br />
-              {(hero.headlineMiddle || 'у ').trimEnd()}
-              {' '}
-              <em>{hero.highlight}</em>
-              <br />
-              {hero.headlineLine3}
+            <h1 className={styles.titleBlock}>
+              <span className={styles.brandTitle}>{hero.headlineLine1}</span>
+              <span className={styles.tagline}>{hero.highlight}</span>
             </h1>
-            <p className={styles.role}>{hero.role}</p>
+            <p className={styles.subhead}>{hero.headlineLine3}</p>
+            <p className={styles.lead}>{hero.role}</p>
             <EnrollButton className={styles.heroCta}>{hero.cta}</EnrollButton>
           </div>
 
           <div className={styles.portrait}>
-            <div className={styles.portraitGlow} aria-hidden="true" />
             <Image
               src={hero.heroImage}
               alt={hero.heroImageAlt}
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 58vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className={styles.portraitImage}
             />
           </div>
@@ -103,15 +91,9 @@ export default function Hero({ hero = DEFAULT_HERO }: Props) {
           {hero.stats.map((stat) => (
             <div key={`${stat.icon ?? 'stat'}-${stat.value}-${stat.label}`} className={styles.statCard}>
               <StatIcon icon={stat.icon} />
-              <div className={styles.statRow}>
-                {stat.value ? <span className={styles.statValue}>{stat.value}</span> : null}
-                {stat.label ? (
-                  <span className={`${styles.statMeta} ${!stat.value ? styles.statMetaOnly : ''}`}>
-                    {statLines(stat.label).map((line) => (
-                      <span key={line}>{line}</span>
-                    ))}
-                  </span>
-                ) : null}
+              <div className={styles.statCopy}>
+                {stat.value ? <p className={styles.statValue}>{stat.value}</p> : null}
+                {stat.label ? <p className={styles.statLabel}>{stat.label.replace(/\|/g, ' ')}</p> : null}
               </div>
             </div>
           ))}

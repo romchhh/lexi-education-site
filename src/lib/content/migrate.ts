@@ -56,16 +56,35 @@ function normalizeGallery(gallery: SiteContent['gallery'], defaults: SiteContent
 
 function normalizeHero(hero: SiteContent['hero'], defaults: SiteContent['hero']): SiteContent['hero'] {
   const statsJson = JSON.stringify(hero.stats)
+  const heroJson = JSON.stringify({
+    line1: hero.headlineLine1,
+    highlight: hero.highlight,
+    line3: hero.headlineLine3,
+    role: hero.role,
+    cta: hero.cta,
+  })
   const isStale =
     hero.heroImage.includes('hero.jpg') ||
     hero.heroImage.includes('unsplash') ||
     statsJson.includes('8+') ||
     statsJson.includes('420+') ||
-    statsJson.includes('1:6') ||
-    statsJson.includes('в парі') ||
-    !statsJson.includes('"icon"')
+    statsJson.includes('"value":"online"') ||
+    statsJson.includes('індивідуально,|') ||
+    statsJson.includes('від початку|') ||
+    !statsJson.includes('"icon"') ||
+    heroJson.includes('Німецька для дітей') ||
+    heroJson.includes('невеликих групах')
   if (!isStale) return hero
-  return { ...hero, heroImage: defaults.heroImage, heroImageAlt: defaults.heroImageAlt, stats: defaults.stats }
+  return {
+    ...hero,
+    headlineLine1: defaults.headlineLine1,
+    headlineMiddle: defaults.headlineMiddle,
+    highlight: defaults.highlight,
+    headlineLine3: defaults.headlineLine3,
+    role: defaults.role,
+    cta: defaults.cta,
+    stats: defaults.stats,
+  }
 }
 
 function normalizeDirections(
