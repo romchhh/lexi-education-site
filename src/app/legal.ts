@@ -1,6 +1,24 @@
 import { BRAND } from './brand'
 import { SITE } from './site'
 
+export const PAYMENT_DETAILS = {
+  recipient: 'ФОП Діденко Марія Сергіївна',
+  iban: 'UA503220010000026003380044023',
+  taxId: '3850906447',
+  bank: 'Акціонерне товариство УНІВЕРСАЛ БАНК',
+  mfo: '322001',
+  bankEdrpou: '21133352',
+} as const
+
+export const PAYMENT_DETAILS_LINES = [
+  `Отримувач: ${PAYMENT_DETAILS.recipient}`,
+  `IBAN: ${PAYMENT_DETAILS.iban}`,
+  `ІПН/ЄДРПОУ: ${PAYMENT_DETAILS.taxId}`,
+  `Банк: ${PAYMENT_DETAILS.bank}`,
+  `МФО: ${PAYMENT_DETAILS.mfo}`,
+  `ЄДРПОУ банку: ${PAYMENT_DETAILS.bankEdrpou}`,
+] as const
+
 export type LegalSection = {
   title: string
   paragraphs: readonly string[]
@@ -50,6 +68,8 @@ export const OFFERTA: LegalDocument = {
       paragraphs: [
         'Актуальні ціни розміщені в розділі «Вартість навчання» на сайті. Школа має право оновлювати ціни; зміни не поширюються на вже оплачені пакети занять.',
         'Оплата здійснюється за домовленістю: банківський переказ, готівковий розрахунок або інший спосіб, погоджений із Школою.',
+        'Реквізити для банківського переказу:',
+        ...PAYMENT_DETAILS_LINES,
         'Знижки на пакети занять застосовуються відповідно до умов, опублікованих на сайті на момент оплати.',
       ],
     },
@@ -80,6 +100,7 @@ export const OFFERTA: LegalDocument = {
       title: '8. Контакти',
       paragraphs: [
         `${BRAND.name}`,
+        PAYMENT_DETAILS.recipient,
         `Телефон: ${BRAND.phone}`,
         `Email: ${BRAND.email}`,
         `Telegram: ${BRAND.telegram}`,
@@ -98,7 +119,7 @@ export const PRIVACY_POLICY: LegalDocument = {
     {
       title: '1. Хто обробляє дані',
       paragraphs: [
-        `Володільцем персональних даних є ${BRAND.name} (${BRAND.email}, ${BRAND.phone}).`,
+        `Володільцем персональних даних є ${PAYMENT_DETAILS.recipient}, що надає послуги під брендом ${BRAND.name} (${BRAND.email}, ${BRAND.phone}).`,
       ],
     },
     {
@@ -175,6 +196,9 @@ export const PRIVACY_POLICY: LegalDocument = {
         `З питань конфіденційності: ${BRAND.email}`,
         `Telegram: ${BRAND.telegram}`,
         `Телефон: ${BRAND.phone}`,
+        PAYMENT_DETAILS.recipient,
+        'Реквізити для оплати послуг:',
+        ...PAYMENT_DETAILS_LINES,
       ],
     },
   ],
