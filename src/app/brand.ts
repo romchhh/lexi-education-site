@@ -13,6 +13,10 @@ export const BRAND = {
   instagram: 'https://www.instagram.com/lexi.education.ua/',
   instagramHandle: 'Lexi.education.ua',
   logo: '/images/lexi/logo.png',
+  favicon: '/favicon.ico',
+  appleTouchIcon: '/images/lexi/apple-touch-icon.png',
+  icon192: '/images/lexi/icon-192.png',
+  icon512: '/images/lexi/icon-512.png',
   heroImage: '/images/lexi/hero.png',
 } as const
 

@@ -68,8 +68,13 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: BRAND.logo, type: 'image/png' }],
-    apple: [{ url: BRAND.logo }],
+    icon: [
+      { url: BRAND.favicon, sizes: '32x32' },
+      { url: BRAND.icon192, sizes: '192x192', type: 'image/png' },
+      { url: BRAND.icon512, sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [{ url: BRAND.appleTouchIcon, sizes: '180x180', type: 'image/png' }],
+    shortcut: BRAND.favicon,
   },
   manifest: '/manifest.webmanifest',
   ...(googleVerification
