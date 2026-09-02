@@ -80,10 +80,10 @@ export const OFFERTA: LegalDocument = {
       title: '8. Контакти',
       paragraphs: [
         `${BRAND.name}`,
-        `Адреса: ${BRAND.address}, ${BRAND.city}`,
         `Телефон: ${BRAND.phone}`,
         `Email: ${BRAND.email}`,
         `Telegram: ${BRAND.telegram}`,
+        `Instagram: ${BRAND.instagram}`,
       ],
     },
   ],
@@ -99,7 +99,6 @@ export const PRIVACY_POLICY: LegalDocument = {
       title: '1. Хто обробляє дані',
       paragraphs: [
         `Володільцем персональних даних є ${BRAND.name} (${BRAND.email}, ${BRAND.phone}).`,
-        `Адреса: ${BRAND.address}, ${BRAND.city}.`,
       ],
     },
     {

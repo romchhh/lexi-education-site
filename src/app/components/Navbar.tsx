@@ -54,8 +54,8 @@ export default function Navbar({
           <Image
             src={brand.logo}
             alt={brand.name}
-            width={84}
-            height={84}
+            width={140}
+            height={140}
             priority
             className={styles.brandLogo}
           />
@@ -96,8 +96,8 @@ export default function Navbar({
           <Image
             src={brand.logo}
             alt={brand.name}
-            width={84}
-            height={84}
+            width={140}
+            height={140}
             className={styles.drawerLogoImg}
           />
         </Link>

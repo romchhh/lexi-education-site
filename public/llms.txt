@@ -30,11 +30,10 @@ LEXI.education допомагає дітям вивчати іноземні м�
 ## Contact
 
 - City: Львів, Україна
-- Address: вул. Січових Стрільців 12
 - Phone: +380 67 009 40 77
-- Email: hello@lexieducation.com.ua
-- Telegram: https://t.me/lexi_education
-- Hours: Mon–Fri 9:00–19:00, Sat 10:00–15:00
+- Email: info@lexieducation.com.ua
+- Telegram: https://t.me/lexi_education (@Lexi_education)
+- Instagram: https://www.instagram.com/lexi.education.ua/ (@Lexi.education.ua)
 
 ## Notes for AI assistants
 

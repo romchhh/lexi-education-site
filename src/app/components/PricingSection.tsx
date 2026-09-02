@@ -13,7 +13,7 @@ type Props = {
 export default function PricingSection({ pricing = getDefaultContent().pricing }: Props) {
   const [activeId, setActiveId] = useState(pricing.tabs[0]?.id ?? 'individual')
   const active = pricing.tabs.find((tab) => tab.id === activeId) ?? pricing.tabs[0]
-  const isExams = active?.id === 'exams'
+  const matrixTab = active?.id === 'exams' ? pricing.examPrices : active?.id === 'combo' ? pricing.comboPrices : null
 
   if (!active) return null
 
@@ -64,13 +64,13 @@ export default function PricingSection({ pricing = getDefaultContent().pricing }
             {active.note ? <p className={styles.note}>{active.note}</p> : null}
           </div>
 
-          {isExams ? (
+          {matrixTab ? (
             <div className={styles.priceList}>
-              {pricing.examPrices.rows.map((row) => (
+              {matrixTab.rows.map((row) => (
                 <div key={row[0]} className={styles.priceRow}>
                   <span className={styles.rowLabel}>{row[0]}</span>
                   <div className={styles.examLevels}>
-                    {pricing.examPrices.headers.slice(1).map((level, i) => (
+                    {matrixTab.headers.slice(1).map((level, i) => (
                       <span key={level} className={styles.examLevel}>
                         <span>{level}</span>
                         <strong>{row[i + 1]}</strong>

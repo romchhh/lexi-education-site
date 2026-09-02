@@ -29,10 +29,11 @@ const SOURCE_LABELS: Record<string, string> = {
 type Props = {
   idPrefix?: string
   compact?: boolean
+  source?: string
   onSuccess?: () => void
 }
 
-export default function EnrollForm({ idPrefix = 'enroll', compact = false, onSuccess }: Props) {
+export default function EnrollForm({ idPrefix = 'enroll', compact = false, source, onSuccess }: Props) {
   const [form, setForm] = useState<FormState>(initial)
   const [errors, setErrors] = useState<Errors>({ name: false, phone: false, email: false })
   const [status, setStatus] = useState<Status>('idle')
@@ -65,7 +66,7 @@ export default function EnrollForm({ idPrefix = 'enroll', compact = false, onSuc
           name: form.name.trim(),
           phone: form.phone.trim(),
           email: form.email.trim(),
-          source: SOURCE_LABELS[idPrefix] ?? idPrefix,
+          source: source ?? SOURCE_LABELS[idPrefix] ?? idPrefix,
           pageUrl: window.location.href,
           pageTitle: document.title,
         }),

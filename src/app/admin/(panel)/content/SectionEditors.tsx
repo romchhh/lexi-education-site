@@ -80,6 +80,9 @@ function BrandEditor({ value, onChange }: { value: SiteContent['brand']; onChang
       <TextField label="Адреса" value={value.address} onChange={(address) => onChange({ ...value, address })} />
       <TextField label="Місто" value={value.city} onChange={(city) => onChange({ ...value, city })} />
       <TextField label="Telegram URL" value={value.telegram} onChange={(telegram) => onChange({ ...value, telegram })} />
+      <TextField label="Telegram (нік)" value={value.telegramHandle} onChange={(telegramHandle) => onChange({ ...value, telegramHandle })} />
+      <TextField label="Instagram URL" value={value.instagram} onChange={(instagram) => onChange({ ...value, instagram })} />
+      <TextField label="Instagram (нік)" value={value.instagramHandle} onChange={(instagramHandle) => onChange({ ...value, instagramHandle })} />
       <MediaField label="Логотип" value={value.logo} onChange={(logo) => onChange({ ...value, logo })} />
       <TextField label="Кнопка в меню (Записатись)" value={value.navCta} onChange={(navCta) => onChange({ ...value, navCta })} />
     </div>
@@ -129,7 +132,7 @@ function DirectionsEditor({ value, onChange }: { value: SiteContent['directions'
       <div className={ui.card}>
         <TextField label="Підзаголовок" value={value.lead} onChange={(lead) => onChange({ ...value, lead })} multiline />
         <TextField label="Кнопка «Детальніше»" value={value.ctaMore} onChange={(ctaMore) => onChange({ ...value, ctaMore })} />
-        <TextField label="Текст «Скоро»" value={value.ctaSoon} onChange={(ctaSoon) => onChange({ ...value, ctaSoon })} />
+        <TextField label="Текст кнопки «Повідомити про старт»" value={value.ctaSoon} onChange={(ctaSoon) => onChange({ ...value, ctaSoon })} />
       </div>
       <ListEditor title="Напрям" value={value.items} onChange={(items) => onChange({ ...value, items })} fields={['id', 'slug', 'title', 'titleEn', 'flag', 'tagline', 'blurb', 'meta', 'href', 'available']} />
     </div>
@@ -270,8 +273,8 @@ function PricingEditor({ value, onChange }: { value: SiteContent['pricing']; onC
         <TextField label="Допомога — текст" value={value.helpText} onChange={(helpText) => onChange({ ...value, helpText })} />
         <TextField label="Допомога — кнопка" value={value.helpCta} onChange={(helpCta) => onChange({ ...value, helpCta })} />
       </div>
-      <JsonEditor label="Таби та таблиці цін (JSON)" value={{ tabs: value.tabs, examPrices: value.examPrices, packages: value.packages }} onChange={(data) => {
-        const parsed = data as Pick<SiteContent['pricing'], 'tabs' | 'examPrices' | 'packages'>
+      <JsonEditor label="Таби та таблиці цін (JSON)" value={{ tabs: value.tabs, examPrices: value.examPrices, comboPrices: value.comboPrices, packages: value.packages }} onChange={(data) => {
+        const parsed = data as Pick<SiteContent['pricing'], 'tabs' | 'examPrices' | 'comboPrices' | 'packages'>
         onChange({ ...value, ...parsed })
       }} />
     </div>

@@ -1,562 +1,422 @@
 .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
-    min-height: 100vh;
-    min-height: 100dvh;
-    max-height: 100vh;
-    max-height: 100dvh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    background: var(--white);
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(240, 210, 216, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 210, 216, 0.55) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+.bgGlow {
+  position: absolute;
+  top: -10%;
+  left: -15%;
+  width: 55vw;
+  height: 80vh;
+  background: radial-gradient(ellipse at center, rgba(240, 210, 216, 0.5) 0%, transparent 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bgGlow2 {
+  position: absolute;
+  bottom: -5%;
+  right: -8%;
+  width: 60vw;
+  height: 85vh;
+  background: radial-gradient(ellipse at center, rgba(237, 231, 230, 0.7) 0%, rgba(240, 210, 216, 0.28) 40%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(28px, 4vw, 40px);
+  width: 100%;
+  min-height: 100dvh;
+  padding: clamp(84px, 9vh, 104px) var(--hero-pad) clamp(36px, 5vh, 56px);
+  box-sizing: border-box;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  min-height: min(78vh, 720px);
+  flex: 1;
+}
+
+.copy {
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  position: relative;
+  z-index: 5;
+  grid-column: 1;
+  grid-row: 1;
+  max-width: min(52rem, 68%);
+  align-self: center;
+  justify-self: start;
+}
+
+.headline {
+  font-family: var(--font-headline);
+  font-weight: 800;
+  font-size: clamp(36px, 4.2vw, 58px);
+  line-height: 1.22;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  text-transform: none;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.headline em {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: normal;
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: var(--graphite);
+  padding: 0.08em 0.18em 0.12em;
+  border-radius: 4px;
+  white-space: normal;
+  background: linear-gradient(180deg, transparent 58%, rgba(232, 184, 194, 0.72) 58%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.role {
+  margin: clamp(20px, 2.5vw, 28px) 0 0;
+  max-width: 42ch;
+  font-family: var(--font-sans);
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.6;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: clamp(24px, 3vw, 36px);
+  padding: 12px 12px 12px 26px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--graphite);
+  color: var(--white);
+  font-family: inherit;
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 10px 30px rgba(41, 41, 41, 0.28);
+  width: 100%;
+  max-width: 420px;
+  justify-content: space-between;
+}
+
+.heroCta:hover {
+  background: var(--rose);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.portrait {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
+  width: min(58%, 760px);
+  height: min(78vh, 720px);
+  max-height: calc(100dvh - 240px);
+  z-index: 1;
+  border-radius: clamp(24px, 3vw, 36px);
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(41, 41, 41, 0.16);
+  animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.portraitGlow {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 85%;
+  height: 75%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(240, 210, 216, 0.55) 0%, rgba(237, 231, 230, 0.35) 42%, transparent 72%);
+  filter: blur(28px);
+  pointer-events: none;
+}
+
+.portraitImage {
+  object-fit: cover;
+  object-position: center 35%;
+  z-index: 1;
+}
+
+.portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.94) 0%,
+    rgba(255, 255, 255, 0.78) 16%,
+    rgba(255, 255, 255, 0.45) 34%,
+    rgba(255, 255, 255, 0.12) 52%,
+    transparent 66%
+  );
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 18px);
+  width: 100%;
+  animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.statCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: clamp(16px, 1.8vw, 20px) clamp(16px, 2vw, 22px);
+  border-radius: 20px;
+  background: var(--white);
+  border: 1.5px solid rgba(31, 31, 31, 0.1);
+  box-shadow: 0 12px 32px rgba(31, 31, 31, 0.06);
+}
+
+.statIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(232, 184, 194, 0.22);
+  color: var(--graphite);
+}
+
+.statIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.statBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 100%;
+}
+
+.statValue {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.2vw, 36px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--graphite);
+  text-transform: lowercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.statMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: #4a4242;
+  text-transform: lowercase;
+  min-width: 0;
+}
+
+.statMetaOnly {
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.35;
+  color: var(--color-muted);
+}
+
+@media (min-width: 769px) {
+  .headline em {
+    display: inline;
+    padding: 0.06em 0.18em 0.1em;
+    line-height: 1.15;
+    vertical-align: baseline;
   }
-  
-  /* Subtle grid */
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background-image:
-      linear-gradient(rgba(240, 210, 216, 0.55) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(240, 210, 216, 0.55) 1px, transparent 1px);
-    background-size: 52px 52px;
-    mask-image: linear-gradient(180deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
-  }
-  
-  /* Soft blush glow — left side */
-  .bgGlow {
-    position: absolute;
-    top: -10%;
-    left: -15%;
-    width: 55vw;
-    height: 80vh;
-    background: radial-gradient(ellipse at center, rgba(240, 210, 216, 0.5) 0%, transparent 65%);
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  /* Soft glow — right side behind portrait */
-  .bgGlow2 {
-    position: absolute;
-    bottom: -5%;
-    right: -8%;
-    width: 60vw;
-    height: 85vh;
-    background: radial-gradient(ellipse at center, rgba(237, 231, 230, 0.7) 0%, rgba(240, 210, 216, 0.28) 40%, transparent 70%);
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  /* ─── Portrait ─── */
-  .portrait {
-    position: absolute;
-    right: clamp(16px, 3vw, 48px);
-    bottom: clamp(24px, 4vh, 48px);
-    width: min(48vw, 640px);
-    height: min(78vh, 760px);
-    z-index: 5;
-    pointer-events: none;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 24px 60px rgba(41, 41, 41, 0.14);
-    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .headline {
+    font-size: clamp(36px, 4.2vw, 56px);
   }
 
-  .portraitGlow {
-    position: absolute;
-    left: 50%;
-    top: 42%;
-    width: 85%;
-    height: 75%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    border-radius: 50%;
-    background:
-      radial-gradient(ellipse at center, rgba(240, 210, 216, 0.55) 0%, rgba(237, 231, 230, 0.35) 42%, transparent 72%);
-    filter: blur(28px);
-    pointer-events: none;
+  .portrait {
+    height: min(70vh, 620px);
   }
-  
-  .portraitImage {
-    object-fit: cover;
-    object-position: center 40%;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
   }
-  
-  /* ─── Body layout ─── */
+
   .body {
-    position: relative;
-    z-index: 2;
-    flex: 1;
+    min-height: auto;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 84px var(--hero-pad) 32px;
+  }
+
+  .main {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 0;
-    padding: 140px var(--hero-pad) 48px;
-    width: 100%;
-    height: 100%;
+    gap: 20px;
+    flex: none;
     min-height: 0;
   }
-  
-  /* ─── Eyebrow ─── */
-  .eyebrow {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 18px;
-  }
-  
-  /* ─── Copy block ─── */
+
   .copy {
-    animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
     position: relative;
-    z-index: 3;
+    z-index: 2;
+    grid-column: auto;
+    grid-row: auto;
+    max-width: 100%;
+    animation: none;
   }
-  
-  /* ─── Headline ─── */
+
+  .portrait {
+    position: relative;
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+    width: 100%;
+    z-index: 1;
+  }
+
   .headline {
-    font-family: var(--font-headline);
-    font-weight: 800;
-    font-size: clamp(36px, 4vw, 56px);
-    line-height: 1.28;
-    color: var(--color-text);
-    letter-spacing: -0.03em;
-    text-transform: none;
-    margin-bottom: 0;
-  }
-  
-  .headline em {
-    font-family: inherit;
-    font-weight: inherit;
-    font-style: normal;
-    font-size: inherit;
-    letter-spacing: inherit;
-    color: var(--graphite);
-    padding: 0.12em 0.22em;
-    border-radius: 4px;
-    white-space: nowrap;
-    background: linear-gradient(180deg, transparent 58%, rgba(232, 184, 194, 0.72) 58%);
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-  }
-  
-  /* ─── Role subtitle ─── */
-  .role {
-    margin-top: 18px;
-    max-width: 48ch;
-    font-family: var(--font-sans);
-    font-size: clamp(16px, 1.5vw, 19px);
-    line-height: 1.55;
-    color: var(--color-muted);
-    font-weight: 600;
-  }
-  
-  /* ─── Hero CTA ─── */
-  .heroCta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 32px;
-    padding: 8px 10px 8px 22px;
-    border: none;
-    border-radius: var(--radius-pill);
-    background: var(--graphite);
-    color: var(--white);
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 8px 26px rgba(41, 41, 41, 0.28);
-  }
-  .heroCta:hover {
-    background: var(--rose);
-    color: var(--white);
-    transform: translateY(-1px);
-  }
-  .ctaIcon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--white);
-    color: var(--graphite);
-    flex-shrink: 0;
-  }
-  .ctaIcon svg {
-    width: 12px;
-    height: 12px;
-  }
-  
-  /* ─── Glass stat badges ─── */
-  .glassCells {
-    position: absolute;
-    inset: 0;
-    z-index: 8;
-    pointer-events: none;
-  }
-  
-  .glassCard {
-    position: absolute;
-    pointer-events: auto;
-    padding: 16px 18px 14px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid rgba(31, 31, 31, 0.14);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow:
-      0 16px 40px rgba(31, 31, 31, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
-  }
-  
-  .glassOrb {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--blush);
-    border: 1px solid rgba(240, 210, 216, 0.9);
-  }
-  
-  .glassRow {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding-right: 28px;
-  }
-  
-  .glassValue {
-    font-family: var(--font-display);
-    font-size: clamp(26px, 3vw, 44px);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--graphite);
-    white-space: nowrap;
-  }
-  
-  .glassMeta {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: clamp(30px, 8vw, 42px);
     line-height: 1.2;
-    letter-spacing: 0.02em;
-    color: #4a4242;
-    text-transform: lowercase;
-  }
-  
-  /* Badge positions — same baseline on desktop */
-  .glassLeft {
-    left: clamp(12px, 5vw, 72px);
-    bottom: clamp(28px, 4vh, 48px);
-    width: min(230px, 30vw);
-  }
-  .glassMid {
-    left: 50%;
-    bottom: clamp(28px, 4vh, 48px);
-    transform: translateX(-50%);
-    width: min(270px, 34vw);
-    z-index: 11;
-    animation-delay: 0.55s;
-  }
-  .glassRight {
-    right: clamp(16px, 4vw, 72px);
-    bottom: clamp(28px, 4vh, 48px);
-    width: min(210px, 28vw);
-    z-index: 11;
-    animation-delay: 0.65s;
-  }
-  
-  @media (min-width: 769px) {
-    .headline em {
-      display: inline-block;
-      padding: 0.06em 0.2em 0.1em;
-      line-height: 1.15;
-      vertical-align: baseline;
-    }
-
-    .body {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 38%);
-      align-items: center;
-      gap: clamp(24px, 3.5vw, 48px);
-      padding: clamp(108px, 11vh, 132px) var(--hero-pad) clamp(64px, 9vh, 88px);
-      z-index: 6;
-    }
-
-    .copy {
-      margin: 0;
-      transform: none;
-      max-width: min(640px, 100%);
-      align-self: center;
-    }
-
-    .portrait {
-      position: relative;
-      right: auto;
-      bottom: auto;
-      width: 100%;
-      height: min(68vh, 620px);
-      max-height: calc(100dvh - 220px);
-      align-self: center;
-      justify-self: end;
-      z-index: 4;
-    }
-
-    .glassCells { z-index: 8; }
-
-    .glassLeft,
-    .glassMid,
-    .glassRight {
-      bottom: clamp(28px, 4vh, 48px);
-    }
-
-    .glassLeft {
-      left: clamp(12px, 5vw, 72px);
-      width: min(220px, 28vw);
-      z-index: 6;
-    }
-
-    .glassMid {
-      transform: translateX(-50%);
-    }
-
-    .glassRight {
-      z-index: 12;
-    }
+    text-wrap: balance;
   }
 
-  @media (min-width: 769px) and (max-width: 1100px) {
-    .headline {
-      font-size: clamp(32px, 3.4vw, 48px);
-    }
-
-    .portrait {
-      height: min(62vh, 540px);
-    }
-  }
-  
-  /* ─── Mobile: title → subtitle → button → photo → badges ─── */
-  @media (max-width: 768px) {
-    .hero {
-      height: auto;
-      min-height: 100svh;
-      max-height: none;
-      overflow: hidden;
-    }
-
-    .bgGlow {
-      left: -30%;
-      width: 90%;
-      max-width: 100%;
-    }
-
-    .bgGlow2 {
-      right: -30%;
-      width: 90%;
-      max-width: 100%;
-    }
-
-    .portraitGlow {
-      display: none;
-    }
-
-    .body {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: stretch;
-      gap: 20px;
-      padding: 100px var(--hero-pad) 32px;
-      height: auto;
-      min-height: 0;
-      width: 100%;
-      max-width: 100%;
-      z-index: 2;
-    }
-
-    .copy {
-      margin: 0;
-      max-width: 100%;
-      width: 100%;
-      min-width: 0;
-      transform: none;
-      animation: none;
-      padding: 0;
-      background: none;
-    }
-
-    .headline {
-      font-size: clamp(28px, 8vw, 40px);
-      line-height: 1.15;
-      width: 100%;
-      max-width: 100%;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-
-    .headline em {
-      white-space: normal;
-      display: inline;
-      padding: 0.04em 0.12em;
-    }
-
-    .role {
-      display: block;
-      margin-top: 12px;
-      font-size: 16px;
-      line-height: 1.5;
-      max-width: 100%;
-    }
-
-    .heroCta {
-      margin-top: 18px;
-      font-size: 15px;
-      padding: 8px 10px 8px 22px;
-      color: var(--white);
-      background: var(--graphite);
-      width: 100%;
-      max-width: 100%;
-      justify-content: space-between;
-      box-sizing: border-box;
-    }
-
-    .ctaIcon {
-      width: 34px;
-      height: 34px;
-    }
-
-    .portrait {
-      position: relative;
-      left: auto;
-      right: auto;
-      top: auto;
-      bottom: auto;
-      width: 100%;
-      max-width: 100%;
-      height: min(52vw, 280px);
-      min-height: 200px;
-      transform: none;
-      border-radius: 16px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-      animation: none;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-      order: 2;
-    }
-
-    .copy {
-      order: 1;
-    }
-
-    .glassCells {
-      position: relative;
-      inset: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 8px;
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
-      padding: 0;
-      z-index: 2;
-      order: 3;
-      pointer-events: auto;
-    }
-
-    .glassCard {
-      position: relative;
-      left: auto !important;
-      right: auto !important;
-      top: auto !important;
-      bottom: auto !important;
-      transform: none !important;
-      max-width: 100%;
-      padding: 12px 14px 11px;
-      border-radius: 14px;
-      box-sizing: border-box;
-    }
-
-    .glassLeft {
-      width: 78%;
-      align-self: flex-start;
-    }
-
-    .glassMid {
-      width: 92%;
-      align-self: flex-end;
-    }
-
-    .glassRight {
-      width: 70%;
-      align-self: flex-start;
-    }
-
-    .glassOrb {
-      top: 10px;
-      right: 10px;
-      width: 18px;
-      height: 18px;
-    }
-
-    .glassRow {
-      gap: 10px;
-      padding-right: 22px;
-      min-width: 0;
-    }
-
-    .glassValue {
-      font-size: 22px;
-      flex-shrink: 0;
-    }
-
-    .glassMeta {
-      font-size: 11px;
-      min-width: 0;
-    }
+  .headline em {
+    white-space: normal;
+    display: inline;
+    padding: 0.04em 0.12em;
   }
 
-  @media (max-width: 480px) {
-    .body {
-      padding: 92px var(--hero-pad) 28px;
-      gap: 16px;
-    }
-
-    .headline {
-      font-size: clamp(26px, 7.5vw, 34px);
-    }
-
-    .role {
-      font-size: 15px;
-    }
-
-    .portrait {
-      height: 48vw;
-      min-height: 180px;
-      border-radius: 14px;
-    }
-
-    .glassCard {
-      padding: 10px 12px;
-    }
-
-    .glassValue {
-      font-size: 20px;
-    }
+  .role {
+    margin-top: 14px;
+    font-size: 16px;
+    max-width: 100%;
   }
+
+  .heroCta {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .portrait {
+    order: 1;
+    height: min(58vw, 320px);
+    min-height: 220px;
+    border-radius: 18px;
+    animation: none;
+  }
+
+  .portrait::after {
+    display: none;
+  }
+
+  .copy {
+    order: 0;
+  }
+
+  .statsRow {
+    order: 2;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    animation: none;
+  }
+
+  .statCard {
+    padding: 14px 16px;
+  }
+
+  .statRow {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .statValue {
+    font-size: 22px;
+  }
+
+  .statMeta {
+    font-size: 11px;
+  }
+
+  .statMetaOnly {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .body {
+    padding: 80px var(--hero-pad) 28px;
+  }
+
+  .headline {
+    font-size: clamp(28px, 7.5vw, 36px);
+  }
+
+  .portrait {
+    height: 52vw;
+    min-height: 200px;
+  }
+}

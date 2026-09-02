@@ -8,39 +8,61 @@
 
 .top {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1.1fr 2fr;
-  gap: 48px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(40px, 5vw, 56px);
 }
 
 .brandBlock {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .brandLogo {
-  width: clamp(56px, 7vw, 72px);
+  width: clamp(96px, 12vw, 136px);
   height: auto;
   aspect-ratio: 1;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
 
-.tag {
+.tagline {
+  margin: 8px 0 0;
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--graphite);
+}
+
+.taglineEm {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--color-muted);
-  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.15;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--rose);
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
 }
 
 .cols {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .col {
@@ -135,12 +157,11 @@
   }
 
   .top {
-    grid-template-columns: 1fr;
     gap: 36px;
   }
 
   .cols {
-    grid-template-columns: 1fr 1fr;
+    max-width: none;
   }
 }
 

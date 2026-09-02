@@ -21,28 +21,25 @@ export default function Footer({
           <Image
             src={brand.logo}
             alt={brand.name}
-            width={96}
-            height={96}
+            width={136}
+            height={136}
             className={styles.brandLogo}
           />
-          <p className={styles.tag}>Школа іноземних мов у Львові</p>
+          <p className={styles.tagline}>Онлайн-школа іноземних мов</p>
+          <p className={styles.taglineEm}>more than words</p>
         </div>
 
         <div className={styles.cols}>
           <div className={styles.col}>
-            <h3>Графік</h3>
-            <p>Пн–Пт: 9:00 – 19:00</p>
-            <p>Сб: 10:00 – 15:00</p>
-          </div>
-          <div className={styles.col}>
             <h3>Контакти</h3>
-            <p>
-              {brand.address}
-              <br />
-              {brand.city}
-            </p>
             <a href={`tel:${brand.phone.replace(/\s/g, '')}`}>{brand.phone}</a>
             <a href={`mailto:${brand.email}`}>{brand.email}</a>
+            <a href={brand.telegram} target="_blank" rel="noreferrer">
+              Telegram · {brand.telegramHandle}
+            </a>
+            <a href={brand.instagram} target="_blank" rel="noreferrer">
+              Instagram · {brand.instagramHandle}
+            </a>
           </div>
           <div className={styles.col}>
             <h3>Навігація</h3>

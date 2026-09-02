@@ -46,10 +46,16 @@ export default function ContactSection({
               <a href={`mailto:${brand.email}`}>{brand.email}</a>
             </li>
             <li>
-              <span>Адреса</span>
-              <p>
-                {brand.address}, {brand.city}
-              </p>
+              <span>Telegram</span>
+              <a href={brand.telegram} target="_blank" rel="noreferrer">
+                {brand.telegramHandle}
+              </a>
+            </li>
+            <li>
+              <span>Instagram</span>
+              <a href={brand.instagram} target="_blank" rel="noreferrer">
+                {brand.instagramHandle}
+              </a>
             </li>
           </ul>
         </div>

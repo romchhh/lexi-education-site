@@ -13,7 +13,8 @@ import { lockBodyScroll, unlockBodyScroll } from '@/lib/scroll-lock'
 
 type EnrollContextValue = {
   open: boolean
-  openEnroll: () => void
+  enrollSource: string | null
+  openEnroll: (source?: string | unknown) => void
   closeEnroll: () => void
 }
 
@@ -21,9 +22,17 @@ const EnrollContext = createContext<EnrollContextValue | null>(null)
 
 export function EnrollProvider({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false)
+  const [enrollSource, setEnrollSource] = useState<string | null>(null)
 
-  const openEnroll = useCallback(() => setOpen(true), [])
-  const closeEnroll = useCallback(() => setOpen(false), [])
+  const openEnroll = useCallback((source?: string | unknown) => {
+    setEnrollSource(typeof source === 'string' ? source : null)
+    setOpen(true)
+  }, [])
+
+  const closeEnroll = useCallback(() => {
+    setOpen(false)
+    setEnrollSource(null)
+  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -50,8 +59,8 @@ export function EnrollProvider({ children }: { children: ReactNode }) {
   }, [open])
 
   const value = useMemo(
-    () => ({ open, openEnroll, closeEnroll }),
-    [open, openEnroll, closeEnroll],
+    () => ({ open, enrollSource, openEnroll, closeEnroll }),
+    [open, enrollSource, openEnroll, closeEnroll],
   )
 
   return <EnrollContext.Provider value={value}>{children}</EnrollContext.Provider>

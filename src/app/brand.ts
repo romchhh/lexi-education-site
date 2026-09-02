@@ -5,12 +5,15 @@ export const BRAND = {
   highlight: 'невеликих групах',
   role: 'Школа іноземних мов у Львові. Живе спілкування, гра й результат уже з перших занять — для дітей будь-якого рівня.',
   phone: '+380 67 009 40 77',
-  email: 'hello@lexieducation.com.ua',
+  email: 'info@lexieducation.com.ua',
   address: 'вул. Січових Стрільців 12',
   city: 'Львів',
   telegram: 'https://t.me/lexi_education',
+  telegramHandle: 'Lexi_education',
+  instagram: 'https://www.instagram.com/lexi.education.ua/',
+  instagramHandle: 'Lexi.education.ua',
   logo: '/images/lexi/logo.png',
-  heroImage: '/images/lexi/hero.jpg',
+  heroImage: '/images/lexi/hero.png',
 } as const
 
 export const NAV = [
@@ -23,9 +26,9 @@ export const NAV = [
 ] as const
 
 export const STATS = [
-  { value: '8+', label: 'років досвіду' },
-  { value: '420+', label: 'щасливих учнів' },
-  { value: '1:6', label: 'у групі максимум' },
+  { icon: 'globe', value: 'online', label: '' },
+  { icon: 'levels', value: 'A1–C1', label: 'від початку|до впевненого спілкування' },
+  { icon: 'group', value: '', label: 'індивідуально,|у парі або в групі' },
 ] as const
 
 export const CONTACT_SERVICES = [
@@ -128,28 +131,28 @@ export const LESSON_STEPS = [
 
 export const GALLERY = [
   {
-    src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Дитина з книгою на занятті',
+    src: '/images/lexi/gallery/05_study_atmosphere_HQ.png',
+    alt: 'Атмосфера навчання у школі LEXI.education',
     size: 'large' as const,
   },
   {
-    src: 'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=900&q=80',
-    alt: 'Заняття з викладачем у класі',
+    src: '/images/lexi/gallery/01_online_lesson_man.png',
+    alt: 'Онлайн-заняття з викладачем',
     size: 'tall' as const,
   },
   {
-    src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
-    alt: 'Учні разом на уроці',
+    src: '/images/lexi/gallery/06_sprachklub_HQ.png',
+    alt: 'Sprachklub — розмовний клуб',
     size: 'wide' as const,
   },
   {
-    src: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=900&q=80',
-    alt: 'Атмосфера навчання в школі',
+    src: '/images/lexi/gallery/02_online_lesson_woman.png',
+    alt: 'Онлайн-урок німецької мови',
     size: 'square' as const,
   },
   {
-    src: '/images/lexi/hero.jpg',
-    alt: 'Заняття у школі LEXI.education',
+    src: '/images/lexi/gallery/04_wortschatz.jpg',
+    alt: 'Робота над словниковим запасом на занятті',
     size: 'square' as const,
   },
 ] as const
@@ -179,15 +182,15 @@ export const PRICING_TABS: PricingTab[] = [
     id: 'individual',
     label: 'Індивідуальні',
     title: 'Індивідуальні заняття',
-    subtitle: '60 хвилин · один на один із викладачем',
+    subtitle: '60 хвилин · індивідуально з викладачем',
     note: 'Програма повністю адаптується під ваш рівень, цілі та темп навчання.',
     tables: [
       {
-        headers: ['Рівень', 'Вартість'],
+        headers: ['Рівень', 'Ціна'],
         rows: [
-          { level: 'A1–A2', price: '800 грн' },
-          { level: 'B1–B2', price: '900 грн' },
-          { level: 'C1–C2', price: '1000 грн' },
+          { level: 'A1–A2', price: '500 грн' },
+          { level: 'B1–B2', price: '590 грн' },
+          { level: 'C1–C2', price: '650 грн' },
         ],
       },
     ],
@@ -195,17 +198,16 @@ export const PRICING_TABS: PricingTab[] = [
   {
     id: 'pair',
     label: 'Парні',
-    title: 'Парні заняття',
-    subtitle: '60 хвилин · 2 студенти',
-    note: 'Можна навчатися разом із другом, партнером або членом сім’ї. Якщо у вас немає напарника — ми допоможемо підібрати студента зі схожим рівнем та цілями.',
+    title: 'Заняття у парі',
+    subtitle: '60 хвилин · 2 студенти · ціна за одну особу',
+    note: 'Навчайтеся разом із другом, партнером або іншим студентом вашого рівня. Якщо у вас немає напарника — ми допоможемо підібрати студента зі схожим рівнем та цілями.',
     tables: [
       {
-        heading: 'Вартість за 1 студента',
-        headers: ['Рівень', 'Вартість'],
+        headers: ['Рівень', 'Ціна'],
         rows: [
-          { level: 'A1–A2', price: '550 грн' },
-          { level: 'B1–B2', price: '650 грн' },
-          { level: 'C1–C2', price: '750 грн' },
+          { level: 'A1–A2', price: '400 грн' },
+          { level: 'B1–B2', price: '450 грн' },
+          { level: 'C1–C2', price: '500 грн' },
         ],
       },
     ],
@@ -218,24 +220,26 @@ export const PRICING_TABS: PricingTab[] = [
     note: 'У групі навчаються студенти зі схожим рівнем та навчальними цілями.',
     tables: [
       {
-        heading: 'Група до 4 студентів',
-        meta: '60 хвилин',
-        headers: ['Рівень', 'Вартість за студента'],
+        heading: 'Мінігрупа — 4 особи',
+        meta: '60 хвилин · до 4 студентів · ціна за одну особу',
+        headers: ['Рівень', 'Ціна'],
         rows: [
-          { level: 'A1–A2', price: '450 грн' },
-          { level: 'B1–B2', price: '550 грн' },
-          { level: 'C1–C2', price: '650 грн' },
+          { level: 'A1–A2', price: '300 грн' },
+          { level: 'B1–B2', price: '350 грн' },
+          { level: 'C1–C2', price: '400 грн' },
         ],
+        footer: 'Невелика група, багато практики та достатньо уваги кожному студенту.',
       },
       {
-        heading: 'Група до 6 студентів',
-        meta: '90 хвилин',
-        headers: ['Рівень', 'Вартість за студента'],
+        heading: 'Група — 6 осіб',
+        meta: '90 хвилин · до 6 студентів · ціна за одну особу',
+        headers: ['Рівень', 'Ціна'],
         rows: [
-          { level: 'A1–A2', price: '350 грн' },
-          { level: 'B1–B2', price: '450 грн' },
-          { level: 'C1–C2', price: '550 грн' },
+          { level: 'A1–A2', price: '250 грн' },
+          { level: 'B1–B2', price: '300 грн' },
+          { level: 'C1–C2', price: '350 грн' },
         ],
+        footer: 'Більше живого спілкування, роботи в парах і практики мови в групі.',
       },
     ],
   },
@@ -247,23 +251,23 @@ export const PRICING_TABS: PricingTab[] = [
     note: 'Обговорення різних тем, дискусії, практична лексика та багато живого спілкування.',
     tables: [
       {
-        heading: '4 студенти',
-        meta: '60 хвилин',
-        headers: ['Рівень', 'Вартість за студента'],
+        heading: 'Sprachklub — до 4 осіб',
+        meta: '60 хвилин · ціна за одну особу',
+        headers: ['Рівень', 'Ціна'],
         rows: [
-          { level: 'A2', price: '600 грн' },
-          { level: 'B1', price: '700 грн' },
-          { level: 'B2', price: '800 грн' },
+          { level: 'A1–A2', price: '400 грн' },
+          { level: 'B1–B2', price: '450 грн' },
+          { level: 'C1–C2', price: '500 грн' },
         ],
       },
       {
-        heading: '6 студентів',
-        meta: '90 хвилин',
-        headers: ['Рівень', 'Вартість за студента'],
+        heading: 'Sprachklub — до 6 осіб',
+        meta: '90 хвилин · ціна за одну особу',
+        headers: ['Рівень', 'Ціна'],
         rows: [
-          { level: 'A2', price: '500 грн' },
-          { level: 'B1', price: '600 грн' },
-          { level: 'B2', price: '700 грн' },
+          { level: 'A1–A2', price: '350 грн' },
+          { level: 'B1–B2', price: '400 грн' },
+          { level: 'C1–C2', price: '450 грн' },
         ],
       },
     ],
@@ -271,31 +275,10 @@ export const PRICING_TABS: PricingTab[] = [
   {
     id: 'combo',
     label: 'Комплекс',
-    title: 'Комплексне навчання',
-    subtitle: 'Група + Sprachklub',
-    note: 'Для тих, хто хоче системно вивчати німецьку та одночасно розвивати розмовну навичку. У комплекс входить групове заняття, Sprachklub, 2 формати щотижня та спеціальна ціна.',
-    tables: [
-      {
-        heading: 'Група 4 студенти',
-        headers: ['Рівень', 'Ціна комплексу'],
-        rows: [
-          { level: 'A1–A2', price: '900 грн' },
-          { level: 'B1–B2', price: '1100 грн' },
-          { level: 'C1–C2', price: '1300 грн' },
-        ],
-        footer: 'Економія — 150 грн на кожному комплексі.',
-      },
-      {
-        heading: 'Група 6 студентів',
-        headers: ['Рівень', 'Ціна комплексу'],
-        rows: [
-          { level: 'A1–A2', price: '700 грн' },
-          { level: 'B1–B2', price: '900 грн' },
-          { level: 'C1–C2', price: '1100 грн' },
-        ],
-        footer: 'Економія — 150 грн на кожному комплексі.',
-      },
-    ],
+    title: 'Комплекс «Група + Sprachklub»',
+    subtitle: '1 групове заняття + 1 Sprachklub · ціна за одну особу',
+    note: 'Для тих, хто хоче системно вивчати німецьку та одночасно розвивати розмовну навичку — два формати щотижня за спеціальною ціною.',
+    tables: [],
   },
   {
     id: 'exams',
@@ -303,27 +286,25 @@ export const PRICING_TABS: PricingTab[] = [
     title: 'Підготовка до міжнародних іспитів',
     subtitle: '+20% до вартості обраного формату',
     note: 'Викладач адаптує програму під конкретний іспит, його структуру та ваш рівень.',
-    tables: [
-      {
-        headers: ['Формат', 'A1–A2'],
-        rows: [
-          { level: 'Індивідуальне', price: '960 грн' },
-          { level: 'Парне · за студента', price: '660 грн' },
-          { level: 'Група 4 · за студента', price: '540 грн' },
-          { level: 'Група 6 · за студента', price: '420 грн' },
-        ],
-      },
-    ],
+    tables: [],
   },
 ]
 
 export const EXAM_PRICES = {
   headers: ['Формат', 'A1–A2', 'B1–B2', 'C1–C2'] as const,
   rows: [
-    ['Індивідуальне', '960 грн', '1080 грн', '1200 грн'],
-    ['Парне · за студента', '660 грн', '780 грн', '900 грн'],
-    ['Група 4 · за студента', '540 грн', '660 грн', '780 грн'],
-    ['Група 6 · за студента', '420 грн', '540 грн', '660 грн'],
+    ['Індивідуальне', '600 грн', '708 грн', '780 грн'],
+    ['Парне · за студента', '480 грн', '540 грн', '600 грн'],
+    ['Група 4 · за студента', '360 грн', '420 грн', '480 грн'],
+    ['Група 6 · за студента', '300 грн', '360 грн', '420 грн'],
+  ] as const,
+}
+
+export const COMBO_PRICES = {
+  headers: ['Формат', 'A1–A2', 'B1–B2', 'C1–C2'] as const,
+  rows: [
+    ['До 4 осіб', '650 грн', '750 грн', '850 грн'],
+    ['До 6 осіб', '550 грн', '650 грн', '750 грн'],
   ] as const,
 }
 
@@ -331,8 +312,8 @@ export const PACKAGES = {
   standard: [
     { name: '4 заняття', discount: '—' },
     { name: '8 занять', discount: '−5%' },
-    { name: '16 занять', discount: '−10%' },
-    { name: '32 заняття', discount: '−15%' },
+    { name: '16 занять', discount: '−7%' },
+    { name: '32 заняття', discount: '−10%' },
   ],
   sprachklub: [
     { name: '8 занять · 2 рази на тиждень', discount: '−5%' },
@@ -355,7 +336,7 @@ export const FAQ = [
   },
   {
     q: 'Що таке комплексне навчання?',
-    a: 'Це поєднання групових занять і розмовного клубу зі спеціальною ціною. Ви системно працюєте над граматикою та регулярно практикуєте живу мову. Економія — 150 грн на кожному комплексі.',
+    a: 'Це поєднання групових занять і розмовного клубу зі спеціальною ціною. Ви системно працюєте над граматикою та регулярно практикуєте живу мову. Економія — 50 грн на кожному комплексі.',
   },
   {
     q: 'Як проходить підготовка до іспитів?',
@@ -363,7 +344,7 @@ export const FAQ = [
   },
   {
     q: 'Чи є знижки на пакети занять?',
-    a: 'Так. Чим більше занять ви плануєте наперед, тим вигідніше: від −5% за 8 занять до −15% за 32 заняття. Для розмовного клубу також є окремі пакети зі знижками.',
+    a: 'Так. Чим більше занять ви плануєте наперед, тим вигідніше: 4 заняття — стандартна вартість, 8 занять −5%, 16 занять −7%, 32 заняття −10%.',
   },
   {
     q: 'З якого віку можна починати?',
@@ -395,9 +376,9 @@ export const DIRECTIONS = [
     title: 'Англійська',
     titleEn: 'English',
     flag: '🇬🇧',
-    tagline: 'Незабаром',
+    tagline: 'Готуємо до запуску',
     blurb: 'Англійський напрям з’явиться трохи пізніше. Залиште контакти — повідомимо першими.',
-    meta: 'Soon',
+    meta: 'Скоро',
     href: '/kontakty',
     available: false,
   },
@@ -407,9 +388,9 @@ export const DIRECTIONS = [
     title: 'Французька',
     titleEn: 'Français',
     flag: '🇫🇷',
-    tagline: 'Незабаром',
+    tagline: 'Готуємо до запуску',
     blurb: 'Французька з’явиться трохи пізніше. Залиште контакти — повідомимо першими.',
-    meta: 'Soon',
+    meta: 'Скоро',
     href: '/kontakty',
     available: false,
   },

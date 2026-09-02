@@ -7,9 +7,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px var(--hero-pad);
-  min-height: 88px;
-  transition: background 0.3s, backdrop-filter 0.3s, padding 0.3s, border-color 0.3s;
+  --nav-h: 85px;
+  min-height: var(--nav-h);
+  height: var(--nav-h);
+  padding: 0 var(--hero-pad);
+  box-sizing: border-box;
+  transition: background 0.3s, backdrop-filter 0.3s, height 0.3s, min-height 0.3s, border-color 0.3s;
   border-bottom: 1px solid transparent;
 }
 
@@ -22,21 +25,23 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom-color: var(--color-line);
-  padding: 16px var(--hero-pad);
-  min-height: 76px;
+  --nav-h: 75px;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
+  align-self: stretch;
+  height: 100%;
   text-decoration: none;
   line-height: 0;
   flex-shrink: 0;
 }
 
 .brandLogo {
-  width: clamp(52px, 5.5vw, 64px);
-  height: auto;
+  width: auto;
+  height: 95%;
+  max-height: 95%;
   aspect-ratio: 1;
   object-fit: contain;
   display: block;
@@ -69,13 +74,13 @@
 .cta {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background: var(--graphite);
   border: none;
   border-radius: var(--radius-pill);
-  padding: 8px 10px 8px 22px;
+  padding: 6px 8px 6px 18px;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--white);
   text-decoration: none;
@@ -94,8 +99,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--white);
   color: var(--graphite);
@@ -141,7 +146,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
-  padding: 88px var(--hero-pad) 32px;
+  padding: var(--nav-h, 68px) var(--hero-pad) 32px;
   overflow-x: hidden;
   overflow-y: auto;
   max-width: 100%;
@@ -183,8 +188,9 @@
 }
 
 .drawerLogoImg {
-  width: 56px;
-  height: auto;
+  height: calc(var(--nav-h, 68px) * 0.95);
+  width: auto;
+  max-height: calc(var(--nav-h, 68px) * 0.95);
   aspect-ratio: 1;
   object-fit: contain;
   display: block;
@@ -257,16 +263,10 @@
 
 @media (max-width: 768px) {
   .nav {
-    padding: 18px var(--hero-pad);
-    min-height: 76px;
+    --nav-h: 70px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-  }
-
-  .brandLogo {
-    width: 52px;
-    height: auto;
   }
 
   .right {

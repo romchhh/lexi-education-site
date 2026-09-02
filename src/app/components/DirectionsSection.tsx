@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import type { DirectionsContent } from '@/lib/content/types'
 import { getDefaultContent } from '@/lib/content/defaults'
+import { useEnroll } from './EnrollContext'
 import styles from './DirectionsSection.module.css'
 
 type Props = {
@@ -8,6 +11,8 @@ type Props = {
 }
 
 export default function DirectionsSection({ content = getDefaultContent().directions }: Props) {
+  const { openEnroll } = useEnroll()
+
   return (
     <section id="napryamy" className={styles.section}>
       <div className={styles.glow} aria-hidden="true" />
@@ -37,7 +42,11 @@ export default function DirectionsSection({ content = getDefaultContent().direct
 
                 <div className={styles.copy}>
                   <h3>{item.title}</h3>
-                  <p className={styles.tagline}>{item.tagline}</p>
+                  {item.tagline ? (
+                    <span className={`${styles.badge} ${item.available ? styles.badgeOpen : styles.badgeSoon}`}>
+                      {item.tagline}
+                    </span>
+                  ) : null}
                   <p className={styles.blurb}>{item.blurb}</p>
                   {item.available ? (
                     <span className={styles.cta}>
@@ -45,7 +54,14 @@ export default function DirectionsSection({ content = getDefaultContent().direct
                       <span aria-hidden="true">→</span>
                     </span>
                   ) : (
-                    <span className={styles.wait}>{content.ctaSoon}</span>
+                    <button
+                      type="button"
+                      className={styles.notifyBtn}
+                      onClick={() => openEnroll(`Повідомити про старт: ${item.title}`)}
+                    >
+                      {content.ctaSoon}
+                      <span aria-hidden="true">→</span>
+                    </button>
                   )}
                 </div>
               </>
@@ -65,7 +81,6 @@ export default function DirectionsSection({ content = getDefaultContent().direct
               <div
                 key={item.id}
                 className={className}
-                aria-disabled="true"
                 data-reveal="scale"
                 style={{ ['--reveal-delay' as string]: `${index * 90}ms` }}
               >

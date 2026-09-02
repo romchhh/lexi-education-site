@@ -124,11 +124,11 @@ export const PAGE_SEO = {
   contacts: {
     title: 'Контакти та запис',
     description:
-      `Запишіться на безкоштовне заняття в LEXI.education: ${BRAND.phone}, ${BRAND.email}, ${BRAND.address}, ${BRAND.city}. Пн–Пт 9:00–19:00.`,
+      `Запишіться на безкоштовне заняття в LEXI.education: ${BRAND.phone}, ${BRAND.email}, Telegram та Instagram.`,
     path: '/kontakty',
     keywords: [
       'LEXI education контакти',
-      'школа іноземних мов Львів адреса',
+      'школа іноземних мов Львів',
       'запис на німецьку Львів',
     ],
   },
@@ -175,10 +175,8 @@ export function organizationJsonLd() {
     telephone: BRAND.phone,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: BRAND.address,
       addressLocality: BRAND.city,
       addressRegion: 'Львівська область',
-      postalCode: '79000',
       addressCountry: 'UA',
     },
     geo: {
@@ -186,7 +184,7 @@ export function organizationJsonLd() {
       latitude: SITE.geo.latitude,
       longitude: SITE.geo.longitude,
     },
-    sameAs: [BRAND.telegram],
+    sameAs: [BRAND.telegram, BRAND.instagram],
     areaServed: {
       '@type': 'City',
       name: BRAND.city,
@@ -212,10 +210,8 @@ export function localBusinessJsonLd() {
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: BRAND.address,
       addressLocality: BRAND.city,
       addressRegion: 'Львівська область',
-      postalCode: '79000',
       addressCountry: 'UA',
     },
     geo: {
@@ -319,7 +315,6 @@ export function courseJsonLd({
         name: BRAND.name,
         address: {
           '@type': 'PostalAddress',
-          streetAddress: BRAND.address,
           addressLocality: BRAND.city,
           addressCountry: 'UA',
         },

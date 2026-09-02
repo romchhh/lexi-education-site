@@ -6,9 +6,12 @@ import EnrollForm from './EnrollForm'
 import styles from './EnrollModal.module.css'
 
 export default function EnrollModal() {
-  const { open, closeEnroll } = useEnroll()
+  const { open, enrollSource, closeEnroll } = useEnroll()
   const titleId = useId()
   const dialogRef = useRef<HTMLDivElement>(null)
+  const notifyDirection = enrollSource?.startsWith('Повідомити про старт:')
+    ? enrollSource.replace('Повідомити про старт: ', '')
+    : null
 
   useEffect(() => {
     if (!open) return
@@ -42,15 +45,32 @@ export default function EnrollModal() {
 
         <header className={styles.header}>
           <h2 id={titleId}>
-            отримай
-            <br />
-            <em>безкоштовне</em>
-            <br />
-            заняття
+            {notifyDirection ? (
+              <>
+                повідомити
+                <br />
+                про старт
+                <br />
+                <em>{notifyDirection.toLowerCase()}</em>
+              </>
+            ) : (
+              <>
+                отримай
+                <br />
+                <em>безкоштовне</em>
+                <br />
+                заняття
+              </>
+            )}
           </h2>
         </header>
 
-        <EnrollForm idPrefix="modal" compact onSuccess={closeEnroll} />
+        <EnrollForm
+          idPrefix="modal"
+          compact
+          source={enrollSource ?? undefined}
+          onSuccess={closeEnroll}
+        />
       </div>
     </div>
   )

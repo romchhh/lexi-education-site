@@ -10,12 +10,15 @@ export type BrandContent = {
   address: string
   city: string
   telegram: string
+  telegramHandle: string
+  instagram: string
+  instagramHandle: string
   logo: string
   navCta: string
 }
 
 export type NavItem = { label: string; href: string }
-export type StatItem = { value: string; label: string }
+export type StatItem = { value: string; label: string; icon?: 'globe' | 'group' | 'levels' }
 
 export type HeroContent = {
   headlineLine1: string
@@ -152,6 +155,10 @@ export type PricingContent = {
     }>
   }>
   examPrices: {
+    headers: string[]
+    rows: string[][]
+  }
+  comboPrices: {
     headers: string[]
     rows: string[][]
   }
